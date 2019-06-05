@@ -15,6 +15,8 @@
 ### Acknowledgment :handshake:
 - Thanks for the script that makes it possible Diplomatic
 - Thanks to everyone of the forum of the Lg K10 in the XDA
+- Thanks to John Wu for the magisk [@topjohnwu
+](https://twitter.com/topjohnwu)
 
 ### Warning :warning:
     WARNING: DO NOT UPDATE MAGISK THROUGH MAGISK MANAGER OR YOU WILL BRICK YOUR DEVICE ON A LOCKED BOOTLOADER
