@@ -12,7 +12,7 @@
 - To manage root access for each application, you must download the Magisk manager [here](https://magiskmanager.com/)
 
 ### Acknowledgment
-- Thanks for the scrip that makes it possible Diplomatic
+- Thanks for the script that makes it possible Diplomatic
 - Thanks to everyone of the forum of the Lg K10 in the XDA
 
 ### Warning

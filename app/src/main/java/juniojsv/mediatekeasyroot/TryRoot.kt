@@ -11,7 +11,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 /*
-* Jeovane Santos 04/06/2019
+* Jeovane Santos 05/06/2019
 */
 
 class TryRoot(
@@ -23,10 +23,12 @@ class TryRoot(
 
     override fun onPreExecute() {
         super.onPreExecute()
+        Toast.makeText(context, "Please wait", Toast.LENGTH_SHORT).show()
         button.isEnabled = false
     }
 
     override fun doInBackground(vararg params: Void?): Boolean {
+        var script: Process? = null
 
         assets.list("").forEach {
             if (it == "magiskinit" || it == "mtk-su" || it == "suboot.sh") {
@@ -46,14 +48,15 @@ class TryRoot(
         }
 
         try {
-            ProcessBuilder().command("${scriptPath.path}/suboot.sh").start()
+            script = ProcessBuilder().command("${scriptPath.path}/suboot.sh").start()
         } catch (error: IOException) {
             error.printStackTrace()
         }
 
-        Thread.sleep(5000)
+        return if (script?.waitFor() == 0) {
+            verifyRoot()
+        } else false
 
-        return verifyRoot()
     }
 
     override fun onPostExecute(result: Boolean?) {
@@ -80,9 +83,10 @@ class TryRoot(
             "/su/bin/su"
         )
 
-        for (path in paths) {
-            if (File(path).exists()) return true
+        paths.forEach {
+            if (File(it).exists()) return true
         }
+
         return false
     }
 
