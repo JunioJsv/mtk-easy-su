@@ -1,6 +1,7 @@
 # MediaTek easy root
 - Get root access with one click
-### Note
+- Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest)
+### Note :memo:
 - If per case, the message fails on your screen, you should try again, because the second attempt is always right ;)
 - To check if your phone is actually root access, run this command on some terminal emulator
 ```sh
@@ -11,9 +12,9 @@
 ````
 - To manage root access for each application, you must download the Magisk manager [here](https://magiskmanager.com/)
 
-### Acknowledgment
+### Acknowledgment :handshake:
 - Thanks for the script that makes it possible Diplomatic
 - Thanks to everyone of the forum of the Lg K10 in the XDA
 
-### Warning
+### Warning :warning:
     WARNING: DO NOT UPDATE MAGISK THROUGH MAGISK MANAGER OR YOU WILL BRICK YOUR DEVICE ON A LOCKED BOOTLOADER
