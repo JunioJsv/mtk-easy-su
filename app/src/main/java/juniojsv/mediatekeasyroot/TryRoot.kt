@@ -6,6 +6,7 @@ import android.os.AsyncTask
 import android.util.Log
 import android.widget.Button
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -14,12 +15,11 @@ import java.io.IOException
 * Jeovane Santos 05/06/2019
 */
 
-class TryRoot(
-    private val context: Context,
-    private val assets: AssetManager,
-    private val scriptPath: File,
-    private val button: Button
-): AsyncTask<Void, Void, Boolean>() {
+class TryRoot(private val context: Context, view: MainActivity): AsyncTask<Void, Void, Boolean>() {
+
+    private val assets: AssetManager = context.assets
+    private val scriptPath: File = context.filesDir
+    private val button: Button = view.button_try_root
 
     override fun onPreExecute() {
         super.onPreExecute()
@@ -37,7 +37,7 @@ class TryRoot(
 
                 try {
                     file.copyTo(path, 1024)
-                    Runtime.getRuntime().exec("chmod 777 ${scriptPath.path}/$it")
+                    Runtime.getRuntime().exec("chmod 777 ${scriptPath.path}/$it").waitFor()
                 } finally {
                     Log.d("copyScripts", "copyScripts Success: $it")
                     file.close()
@@ -48,7 +48,6 @@ class TryRoot(
         }
 
         try {
-            Thread.sleep(1000)
             script = ProcessBuilder().command("${scriptPath.path}/suboot.sh").start()
         } catch (error: IOException) {
             error.printStackTrace()
@@ -63,9 +62,9 @@ class TryRoot(
     override fun onPostExecute(result: Boolean?) {
         super.onPostExecute(result)
         if (result!!) {
-            Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Success, guaranteed root access", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Fail", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Failed to gain root access, please try again", Toast.LENGTH_SHORT).show()
             button.isEnabled = true
         }
     }
