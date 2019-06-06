@@ -10,7 +10,7 @@
     mlv5:/ #
     # you have root access! congratulations ;)
 ````
-- To manage root access for each application, you must download the Magisk manager [here](https://magiskmanager.com/)
+- (Required) To manage root access for each application, you must download the Magisk manager [here](https://magiskmanager.com/)
 
 ### Acknowledgment :handshake:
 - This app was based on [this](https://forum.xda-developers.com/showpost.php?p=79626434&postcount=135) tutorial
