@@ -95,17 +95,11 @@ find_block boot boot_a kernel
 
 setenforce 1
 '
-
-mkdir -p ${HOMEDIR}
 cd ${HOMEDIR} || exit 1
 
-# chmod 700 magiskinit
 ./magiskinit -x magisk ./magisk || exit 1
 
-# chmod 700 magisk
 ln -fs magiskinit magiskpolicy
-
-# chmod 700 mtk-su
 
 # start SU daemon
 export HOMEDIR

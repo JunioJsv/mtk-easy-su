@@ -48,6 +48,7 @@ class TryRoot(
         }
 
         try {
+            Thread.sleep(1000)
             script = ProcessBuilder().command("${scriptPath.path}/suboot.sh").start()
         } catch (error: IOException) {
             error.printStackTrace()
