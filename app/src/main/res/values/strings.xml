@@ -1,16 +1,15 @@
 <resources>
-    <string name="app_name">MediaTek easy root</string>
-    <string name="try_root_now">Try root now</string>
+    <string name="app_name">MediaTek Easy Root</string>
+    <string name="try_root_now">Activate temporary root</string>
     <string name="about">
-        This app sets up bootless root with Magisk on MediaTek Android devices.
+        This app sets up a bootless temporary root with Magisk on MediaTek Android devices.\n
         It uses mtk-su, the temporary root tool for MediaTek ARMv7 and ARMv8 chips.
     </string>
     <string name="warning">
-        WARNING: DO NOT UPDATE MAGISK THROUGH MAGISK MANAGER OR YOU WILL BRICK YOUR
-        DEVICE ON A LOCKED BOOTLOADER
+        WARNING: DO NOT UPDATE MAGISK THROUGH MAGISK MANAGER ON A LOCKED BOOTLOADER OR YOU WILL BRICK YOUR DEVICE
     </string>
     <string name="developer">
         Created by Jeovane Santos\n
-        Thanks for the script Diplomatic.
+        Thanks to Diplomatic for writing the main script.
     </string>
 </resources>
