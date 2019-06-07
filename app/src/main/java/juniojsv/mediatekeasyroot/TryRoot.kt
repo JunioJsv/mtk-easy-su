@@ -62,9 +62,9 @@ class TryRoot(private val context: Context, view: MainActivity): AsyncTask<Void,
     override fun onPostExecute(result: Boolean?) {
         super.onPostExecute(result)
         if (result!!) {
-            Toast.makeText(context, "Success, guaranteed root access", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Success! root access granted.", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Failed to gain root access, please try again", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Failed to gain root access, please try again.", Toast.LENGTH_SHORT).show()
             button.isEnabled = true
         }
     }
