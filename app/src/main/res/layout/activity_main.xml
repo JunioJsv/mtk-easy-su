@@ -6,39 +6,107 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity" android:background="@color/primaryColor">
-    <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+    <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="16dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/button_try_root" app:cardElevation="8dp"
-            app:cardMaxElevation="8dp">
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toTopOf="@+id/button_try_root"
+    >
         <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:gravity="center"
-                android:layout_marginBottom="8dp"
-                android:padding="16dp">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/about" android:textAlignment="center"
-                    android:textAllCaps="true" android:paddingLeft="32dp" android:paddingRight="32dp"/>
-            <TextView
-                    android:text="@string/warning"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="32dp" android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textStyle="bold"/>
-            <TextView
-                    android:text="@string/developer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:gravity="center" android:paddingLeft="32dp"
-                    android:paddingRight="32dp"/>
+                    android:layout_height="wrap_content" android:layout_margin="16dp" app:cardElevation="8dp"
+                    app:cardMaxElevation="8dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:padding="16dp">
+                    <TextView
+                            android:text="Developers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/Developers"
+                            app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                    <com.google.android.material.button.MaterialButton android:layout_width="match_parent"
+                                                                       android:layout_height="wrap_content"
+                                                                       app:layout_constraintTop_toBottomOf="@+id/Diplomatic"
+                                                                       tools:layout_editor_absoluteX="16dp"
+                                                                       app:layout_constraintBottom_toBottomOf="parent"
+                                                                       android:id="@+id/button_donate"
+                                                                       android:layout_marginTop="16dp"
+                                                                       style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                                                       android:backgroundTint="@android:color/background_light"
+                                                                       android:textColor="@color/primaryColor"
+                                                                       android:text="donate"
+                                                                       app:rippleColor="@color/primaryColor"/>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintTop_toBottomOf="@+id/Jeovane"
+                            app:layout_constraintStart_toStartOf="parent" android:id="@+id/Diplomatic">
+                        <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp" app:srcCompat="@drawable/people_img"
+                                android:id="@+id/diplomatic_img" android:background="@color/ic_launcher_background"
+                                android:scaleType="centerCrop" android:padding="4dp"/>
+                        <TextView
+                                android:text="Diplomatic\nCreator of suboot.sh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/diplomatic_name"
+                                android:layout_weight="1" android:layout_marginLeft="8dp"
+                                android:lineSpacingExtra="4dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@+id/Developers"
+                            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="16dp"
+                            android:id="@+id/Jeovane">
+                        <ImageView
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:id="@+id/jeovane_img"
+                                app:srcCompat="@mipmap/jeovane_img" android:scaleType="centerCrop"
+                        />
+                        <TextView
+                                android:text="Jeovane Santos\nCreator of app"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/jeovane_name"
+                                android:layout_marginStart="8dp"
+                                android:lineSpacingExtra="4sp"/>
+                    </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:layout_margin="16dp" app:cardElevation="8dp"
+                    app:cardMaxElevation="8dp">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:padding="16dp">
+                    <TextView
+                            android:text="Warning"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/Warning"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" android:id="@+id/warning_text"
+                            android:layout_marginTop="16dp"
+                            app:layout_constraintTop_toBottomOf="@+id/Warning"
+                            app:layout_constraintStart_toStartOf="parent" android:text="@string/warning"
+                            android:textAlignment="viewStart"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </ScrollView>
     <com.google.android.material.button.MaterialButton
             android:text="@string/try_root_now"
             android:layout_width="0dp" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent"
