@@ -5,39 +5,46 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent">
-        <TextView
+        tools:context=".MainActivity" android:background="@color/primaryColor">
+    <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="16dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/button_try_root" app:cardElevation="8dp"
+            app:cardMaxElevation="8dp">
+        <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/about" android:textAlignment="center"
-                android:textAllCaps="true" android:paddingLeft="32dp" android:paddingRight="32dp"/>
-        <TextView
-                android:text="@string/warning"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="32dp" android:textAlignment="center"
-                android:textColor="@android:color/holo_red_dark"
-                android:textStyle="bold"/>
-        <TextView
-                android:text="@string/developer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:gravity="center" android:paddingLeft="32dp"
-                android:paddingRight="32dp"/>
-    </LinearLayout>
-    <Button
+                android:layout_height="wrap_content" android:gravity="center"
+                android:layout_marginBottom="8dp"
+                android:padding="16dp">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about" android:textAlignment="center"
+                    android:textAllCaps="true" android:paddingLeft="32dp" android:paddingRight="32dp"/>
+            <TextView
+                    android:text="@string/warning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="32dp" android:textAlignment="center"
+                    android:textColor="@android:color/holo_red_dark"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="@string/developer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:gravity="center" android:paddingLeft="32dp"
+                    android:paddingRight="32dp"/>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+    <com.google.android.material.button.MaterialButton
             android:text="@string/try_root_now"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" android:id="@+id/button_try_root"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp"
-    />
+            android:layout_width="0dp" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/button_try_root" android:layout_margin="16dp" app:icon="@drawable/ic_launcher_foreground"
+            app:iconSize="48dp"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            app:iconPadding="0dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

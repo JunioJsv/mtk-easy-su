@@ -15,16 +15,18 @@ import java.io.IOException
 * Jeovane Santos 05/06/2019
 */
 
-class TryRoot(private val context: Context, view: MainActivity): AsyncTask<Void, Void, Boolean>() {
+class TryRoot(private val context: Context, view: MainActivity? = null) : AsyncTask<Void, Void, Boolean>() {
 
     private val assets: AssetManager = context.assets
     private val scriptPath: File = context.filesDir
-    private val button: Button = view.button_try_root
+    private val button: Button? = if (view != null) view.button_try_root else null
 
     override fun onPreExecute() {
         super.onPreExecute()
         Toast.makeText(context, "Please wait", Toast.LENGTH_SHORT).show()
-        button.isEnabled = false
+        if (button != null) {
+            button.isEnabled = false
+        }
     }
 
     override fun doInBackground(vararg params: Void?): Boolean {
@@ -65,7 +67,9 @@ class TryRoot(private val context: Context, view: MainActivity): AsyncTask<Void,
             Toast.makeText(context, "Success! root access granted.", Toast.LENGTH_SHORT).show()
         } else {
             Toast.makeText(context, "Failed to gain root access, please try again.", Toast.LENGTH_SHORT).show()
-            button.isEnabled = true
+            if (button != null) {
+                button.isEnabled = true
+            }
         }
     }
 
