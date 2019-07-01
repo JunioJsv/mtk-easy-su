@@ -8,7 +8,11 @@ import android.widget.Toast
 class RunOnBoot : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
-        Toast.makeText(context, "Trying to ensure root access", Toast.LENGTH_SHORT).show()
-        context?.let { TryRoot(it).execute() }
+        if (context != null && context.getSharedPreferences("preferences", Context.MODE_PRIVATE)
+                .getBoolean("run_on_boot", false)
+        ) {
+            Toast.makeText(context, "Trying to ensure root access", Toast.LENGTH_SHORT).show()
+            context?.let { TryRoot(it).execute() }
+        }
     }
 }
