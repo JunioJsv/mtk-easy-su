@@ -1,5 +1,5 @@
 # MediaTek Easy Root
-- Get temporary root access with one click
+- Get bootless root access with one click
 - Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest)
 - [Buy a snack for me :hamburger:](https://www.mercadopago.com/mlb/checkout/start?pref_id=365594257-359f7b8e-cc7c-4ff2-8fd1-4fc73eb6de50)
 
@@ -22,6 +22,8 @@
 | Lg K10 TV       | K430DSF |  MediaTek MT6753 | Success |
 | Lg K4           |  X230DS | MediaTek MT6737M | Success |
 | Motorola Moto C |  XT1756 | Mediatek MT6737M | Success |
+| Motorola Moto E4|  XT1773 |  Mediatek MT6737 | Success |
+| Alcatel A3 LX   |  9008X  | Mediatek MT8735B | Success |
 | Lg K8           |   K350  |  Mediatek MT6735 |   Fail  |
 
 ### Acknowledgments :handshake:
