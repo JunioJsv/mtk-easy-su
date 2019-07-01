@@ -22,6 +22,8 @@
 | Lg K10 TV       | K430DSF |  MediaTek MT6753 | Success |
 | Lg K4           |  X230DS | MediaTek MT6737M | Success |
 | Motorola Moto C |  XT1756 | Mediatek MT6737M | Success |
+| Motorola Moto E4|  XT1773 |  Mediatek MT6737 | Success |
+| Alcatel A3 LX   |  9008X  | Mediatek MT8735B | Success |
 | Lg K8           |   K350  |  Mediatek MT6735 |   Fail  |
 
 ### Acknowledgments :handshake:
