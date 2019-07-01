@@ -5,6 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 
+/*
+* Jeovane Santos 30/06/2019
+*/
+
 class RunOnBoot : BroadcastReceiver() {
 
     override fun onReceive(context: Context?, intent: Intent?) {

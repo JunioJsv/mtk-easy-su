@@ -12,7 +12,7 @@ import java.io.FileOutputStream
 import java.io.IOException
 
 /*
-* Jeovane Santos 05/06/2019
+* Jeovane Santos 30/06/2019
 */
 
 class TryRoot(private val context: Context, view: MainActivity? = null) : AsyncTask<Void, Void, Boolean>() {

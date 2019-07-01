@@ -3,7 +3,7 @@
     <string name="try_root_now">Activate bootless root</string>
     <string name="about">
         This app sets up a bootless root with Magisk on MediaTek Android devices.
-        It uses mtk-su, the temporary root binary for MediaTek ARMv7 and ARMv8 chips.
+        It uses mtk-su, the bootless root binary for MediaTek ARMv7 and ARMv8 chips.
     </string>
     <string name="warning">
         Do not update Magisk through Magisk Manager on a locked bootloader or you will brick your device. Including, i
