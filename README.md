@@ -1,5 +1,5 @@
 # MediaTek Easy Root
-- Get temporary root access with one click
+- Get bootless root access with one click
 - Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest)
 - [Buy a snack for me :hamburger:](https://www.mercadopago.com/mlb/checkout/start?pref_id=365594257-359f7b8e-cc7c-4ff2-8fd1-4fc73eb6de50)
 
