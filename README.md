@@ -20,11 +20,13 @@
 | Lg K10          |  M250DS |  MediaTek MT6750 | Success |
 | Lg K10 Power    |  M320TV |  MediaTek MT6750 | Success |
 | Lg K10 TV       | K430DSF |  MediaTek MT6753 | Success |
+| Lg K8           |   K350  |  Mediatek MT6735 |   Fail  |
 | Lg K4           |  X230DS | MediaTek MT6737M | Success |
 | Motorola Moto C |  XT1756 | Mediatek MT6737M | Success |
 | Motorola Moto E4|  XT1773 |  Mediatek MT6737 | Success |
 | Alcatel A3 LX   |  9008X  | Mediatek MT8735B | Success |
-| Lg K8           |   K350  |  Mediatek MT6735 |   Fail  |
+| Alcatel 1       |  5033T  |  Mediatek MT6739 | Success |
+| Alcatel U5 3G   |  4047A  | Mediatek MT6580M |   Fail  |
 
 ### Acknowledgments :handshake:
 - This app was based on [this](https://forum.xda-developers.com/showpost.php?p=79626434&postcount=135) tutorial.
