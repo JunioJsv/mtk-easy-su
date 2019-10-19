@@ -27,6 +27,7 @@
 | Alcatel A3 LX   |  9008X  | Mediatek MT8735B | Success |
 | Alcatel 1       |  5033T  |  Mediatek MT6739 | Success |
 | Alcatel U5 3G   |  4047A  | Mediatek MT6580M |   Fail  |
+| Blu S532        |  Studio X8 HD | Mediatek MT6580 | Fail |
 
 ### Acknowledgments :handshake:
 - This app was based on [this](https://forum.xda-developers.com/showpost.php?p=79626434&postcount=135) tutorial.
