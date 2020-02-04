@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Mtk Easy Su</string>
+    <string name="try_root_now">Activate bootless root</string>
+    <string name="about">
+        This app set up a bootless root with Magisk and Mtk-su (by Diplomatic@Xda) on MediaTek Android devices.\n\n
+        Required to manage root access for each application, you must download Magisk manager v7.1.1.\n\n
+        Supported Chipsets MT6735, MT6737, MT6738, MT6739, MT6750, MT6753, MT6755, MT6757, MT6758, MT6761, MT6762, MT6763, MT6765, MT6771, MT6779, MT6795, MT6797, MT6799, MT8163, MT8167, MT8173, MT8176, MT6580, MT6595
+    </string>
+    <string name="warning">
+        Do not update Magisk through Magisk Manager on a locked bootloader or you will brick your device. Including, i
+        am not liable for any kind of damage to your device
+    </string>
+    <string name="about_word">About</string>
+    <string name="developers">Developers</string>
+    <string name="magisk">John Wu\nDeveloper of magisk</string>
+    <string name="my_people">JunioJsv\nCreator of this app</string>
+    <string name="mtk_su">Diplomatic\nDeveloper of mtk-su</string>
+    <string name="preferences">Preferences</string>
+    <string name="run_on_boot">Run on boot</string>
+    <string name="log">Log</string>
+    <string name="log_null">$</string>
+    <string name="github">Github</string>
+    <string name="warning_word">Warning</string>
+    <string name="todo">TODO</string>
+    <string name="copy">copy</string>
+    <string name="xda">Xda forum</string>
+</resources>
