@@ -1,10 +1,11 @@
 # Mtk Easy Su
-- This app set up bootless root access with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su (by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642)@Xda) on MediaTek Android devices.
-- Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest)
+- This app set up bootless super user access, with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su, on MediaTek Android devices. To facilitate those wishing to use the security breach Mtk-su by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642).
+- Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest), at your own risk.
 
 ### Notes :memo:
-- (:warning:__Required__) To manage root access for each application, you must download [Magisk manager](https://github.com/topjohnwu/Magisk/releases/tag/manager-v7.1.1) (__v7.1.1__)
-- (:warning:__Required__) Before installing the app make sure that **google play protect is disabled**, in recent weeks the play store has marked the app as harmful for no reason.
+- (:warning:__REQUIRED__) To manage root access for each application, you must download [Magisk manager](https://github.com/topjohnwu/Magisk/releases/tag/manager-v7.1.1) (__v7.1.1__).
+- (:warning:__REQUIRED__) Before installing the app make sure that **google play protect is disabled**, in recent weeks the play store has marked the app as harmful for no reason.
+- (:warning:__READ THIS__) XDA - [Critical MediaTek rootkit affecting millions of Android devices has been out in the open for months](https://www.xda-developers.com/mediatek-su-rootkit-exploit/).
 - To check if you have been granted root access, check the value returned by the log, when it is 0 is because it worked and you have root access, the log below is of a mediatek that this app was successful.
 ```sh
 param1: 0x1000, param2: 0x8040, type: 4
