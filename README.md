@@ -53,6 +53,11 @@ returned 0
 | Blu Studio X8 HD|   S532  |  Mediatek MT6580 |   Fail  |
 | Nook Tablet 10.1|BNTV650|Mediatek A35-MT8167A| Success |
 |ZTE Blade A7 Prime|  OEM  |Mediatek A22-MT6761| Success |
+| Oppo F7         | CPH1821 |  Mediatek MT6771 |   Fail  |
+| Oppo F3         | CPH1609 | Mediatek MT6750T |   Fail  |
+|Lenovo Vibe K5 Note|A7020a48|Mediatek MT6755  |   Fail  |
+| Vernee Mix 2    |  Mix 2  | Mediatek MT6757CD| Success |
+| Nokia 1         | TA-1130 | Mediatek MT6739WW|   Fail  |
 
 ### Acknowledgments :handshake:
 - This app was based on [this](https://forum.xda-developers.com/showpost.php?p=79626434&postcount=135) tutorial.
