@@ -1,41 +1,23 @@
 # Mtk Easy Su
 - This app set up bootless super user access, with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su, on MediaTek Android devices. To facilitate those wishing to use the security breach Mtk-su by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642).
 - Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest), at your own risk.
+- I really want to work with something that involves programming, if anyone has any opportunity please contact us, juniojsv@gmail.com
 
 ### Notes :memo:
 - (:warning:__REQUIRED__) To manage root access for each application, you must download [Magisk manager](https://github.com/topjohnwu/Magisk/releases/tag/manager-v7.1.1) (__v7.1.1__).
 - (:warning:__REQUIRED__) Before installing the app make sure that **google play protect is disabled**, in recent weeks the play store has marked the app as harmful for no reason.
 - (:warning:__READ THIS__) XDA - [Critical MediaTek rootkit affecting millions of Android devices has been out in the open for months](https://www.xda-developers.com/mediatek-su-rootkit-exploit/).
-- To check if you have been granted root access, check the value returned by the log, when it is 0 is because it worked and you have root access, the log below is of a mediatek that this app was successful.
+- (:warning:__WARNING__) Any firmware update released after March, 2020 is bound to block the method used by mtk-easy-su. Think twice before updating your device if you would like to keep using mtk-easy-su or mtk-su.
+- To check if you have been granted super user access, check the exit value returned by the log, when it is 0 is because it worked and you have root access, the log below is of a mediatek device (LG K10 2017) that this app was successful.
 ```sh
-param1: 0x1000, param2: 0x8040, type: 4
-Building symbol table
-kallsyms_addresses pa 0x40e81240
-kallsyms_num_syms 81314, addr_count 81314
-kallsyms_names pa 0x40ed08e0, size 1013690
-kallsyms_markers pa 0x40fc80a0
-kallsyms_token_table pa 0x40fc85a0
-kallsyms_token_index pa 0x40fc8950
-Patching credentials
-Parsing current_is_single_threaded
-c0478518: MOVW R0, #0x8d60
-c047851c: MOVT R0, #0xc162
-init_task VA: 0xc1628d60
-Potential list_head tasks at offset 0x2b0
-comm swapper/0 at offset 0x430
-Found own task_struct at node 1
-cred VA: 0xcdf01480
-Parsing avc_denied
-c0cdea6c: MOVW R12, #0x77e4
-c0cdea70: MOVT R12, #0xc190
-selinux_enforcing VA: 0xc19077e4
-Setting selinux_enforcing
-Switched selinux to permissivearmv7l machine
-starting /system/bin/sh
+...
+/data/data/juniojsv.mtk.easy.su/files
 UID: 0  cap: 3fffffffff  selinux: permissive  
-returned 0
+Load policy from: /sys/fs/selinux/policy
+20.4:MAGISK (20400)
+client: launching new main daemon process
+Exit value 0
 ```
-> _If for some reason the script fails on the first attempt, try again. The second attempt is sometimes successful._
 
 ### Tested devices :heavy_check_mark:
 |      Device     |  Model  |      Chipset     |  Result |
@@ -60,10 +42,10 @@ returned 0
 | Nokia 1         | TA-1130 | Mediatek MT6739WW|   Fail  |
 
 ### Acknowledgments :handshake:
-- This app was based on [this](https://forum.xda-developers.com/showpost.php?p=79626434&postcount=135) tutorial.
-- Thanks to [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642) for writing the script that makes this app possible.
+- This app was based on [this](https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703) tutorial.
+- Thanks to [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642) for writing the mtk-su that makes this app possible.
 - Thanks to everyone on the LG K10 XDA Forum.
-- Thanks to John Wu for Magisk Manager. [@topjohnwu](https://twitter.com/topjohnwu)
+- Thanks to John Wu for Magisk. [@topjohnwu](https://twitter.com/topjohnwu)
 
 ### Warning :warning:
     WARNING: DO NOT UPDATE MAGISK THROUGH MAGISK MANAGER ON A LOCKED BOOTLOADER OR YOU WILL BRICK YOUR DEVICE.
