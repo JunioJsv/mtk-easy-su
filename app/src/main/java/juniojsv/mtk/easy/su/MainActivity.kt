@@ -3,12 +3,16 @@ package juniojsv.mtk.easy.su
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.ref.WeakReference
+import kotlinx.android.synthetic.main.asset_view.view.*
 
 /* d88b db    db d8b   db d888888b  .d88b.     d88b .d8888. db    db
    `8P' 88    88 888o  88   `88'   .8P  Y8.    `8P' 88'  YP 88    88
@@ -18,17 +22,45 @@ db. 88  88b  d88 88  V888   .88.   `8b  d8' db. 88  db   8D  `8bd8'
 Y8888P  ~Y8888P' VP   V8P Y888888P  `Y88P'  Y8888P  `8888Y'    YP  */
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var preferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.elevation = 0.0f
+        preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
 
-        val preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+        AssetsManager.getAll(this) { assets ->
+            LayoutInflater.from(this).apply {
+                assets.forEach { asset ->
+                    assets_list.addView(inflate(R.layout.asset_view, assets_list, false).apply {
+                        name.text = asset.name
+                        tag_name.text = asset.tagName
+                        button.setOnClickListener { assetView ->
+                            assetView.button.text = getString(R.string.installing)
+                            AssetsManager.install(context, asset) {
+                                runOnUiThread {
+                                    "It is necessary to reboot the device".toast(context, true)
+                                    assets_list.notifyInstalledAsset()
+                                }
+                            }
+                        }
+                    })
+                }
+                assets_list.notifyInstalledAsset()
+            }
+        }
 
-        version_text.text = String.format("Version %s",
-            BuildConfig.VERSION_NAME
-        )
+        version_text.text =
+            String.format("Version %s", BuildConfig.VERSION_NAME)
+
+        button_donate.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse(
+                    "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UNXAC9R9MYB8C&source=url"
+                )
+            })
+        }
 
         switch_run_on_boot.apply {
             isChecked = preferences.getBoolean("run_on_boot", false)
@@ -56,18 +88,52 @@ class MainActivity : AppCompatActivity() {
         }
 
         button_try_root.setOnClickListener {
-            button_try_root.isEnabled = false
-            TryRoot(WeakReference(applicationContext)) { success, log ->
-                button_try_root.isEnabled = success == false
-                this.log.text = log
-                button_copy.visibility = View.VISIBLE
-            }.execute()
+            when {
+                preferences.getString(
+                    "asset_tag",
+                    "null"
+                ) == "null" -> "Please install a asset".toast(this)
+                preferences.getBoolean("need_reset", false) -> "Please reboot your device".toast(
+                    this
+                )
+                else -> {
+                    button_try_root.isEnabled = false
+                    "Please wait".toast(this)
+                    AssetsManager.tryRoot(this) { success, log ->
+                        runOnUiThread {
+                            button_try_root.isEnabled = success == false
+                            this.log.text = log
+                            button_copy.visibility = View.VISIBLE
+                            if (success) "Success".toast(this) else "Fail try again".toast(this)
+                        }
+                    }
+                }
+            }
         }
 
         button_copy.setOnClickListener {
             (getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager)
                 .setPrimaryClip(ClipData.newPlainText("log", log.text))
 
+        }
+    }
+
+    private fun LinearLayout.notifyInstalledAsset() {
+        val installedAssetTag = preferences.getString("asset_tag", "null")!!
+        children.forEach {
+            it.tag_name.text.also { tagName ->
+                if (tagName == installedAssetTag)
+                    with(it.button) {
+                        text = getString(R.string.installed)
+                        isEnabled = false
+                    }
+                else {
+                    with(it.button) {
+                        text = getString(R.string.install)
+                        isEnabled = true
+                    }
+                }
+            }
         }
     }
 }

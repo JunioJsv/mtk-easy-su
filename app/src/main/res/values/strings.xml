@@ -27,4 +27,9 @@
     <string name="todo">TODO</string>
     <string name="copy">copy</string>
     <string name="xda">Xda forum</string>
+    <string name="assets">Assets</string>
+    <string name="install">install</string>
+    <string name="installed">installed</string>
+    <string name="installing">installing</string>
+    <string name="donate">donate</string>
 </resources>
