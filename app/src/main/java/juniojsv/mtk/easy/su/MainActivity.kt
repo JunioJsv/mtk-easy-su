@@ -40,7 +40,10 @@ class MainActivity : AppCompatActivity() {
                             assetView.button.text = getString(R.string.installing)
                             AssetsManager.install(context, asset) {
                                 runOnUiThread {
-                                    "It is necessary to reboot the device".toast(context, true)
+                                    "It is necessary to reboot the device".snack(
+                                        main_conteiner,
+                                        true
+                                    )
                                     assets_list.notifyInstalledAsset()
                                 }
                             }
@@ -92,19 +95,20 @@ class MainActivity : AppCompatActivity() {
                 preferences.getString(
                     "asset_tag",
                     "null"
-                ) == "null" -> "Please install a asset".toast(this)
-                preferences.getBoolean("need_reset", false) -> "Please reboot your device".toast(
-                    this
+                ) == "null" -> "Please install a asset".snack(main_conteiner)
+                preferences.getBoolean("need_reset", false) -> "Please reboot your device".snack(
+                    main_conteiner
                 )
                 else -> {
                     button_try_root.isEnabled = false
-                    "Please wait".toast(this)
+                    "Please wait".snack(main_conteiner)
                     AssetsManager.tryRoot(this) { success, log ->
                         runOnUiThread {
                             button_try_root.isEnabled = success == false
                             this.log.text = log
                             button_copy.visibility = View.VISIBLE
-                            if (success) "Success".toast(this) else "Fail try again".toast(this)
+                            if (success) "Success".snack(main_conteiner)
+                            else "Fail try again".snack(main_conteiner)
                         }
                     }
                 }

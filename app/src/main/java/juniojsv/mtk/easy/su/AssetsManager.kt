@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
+import android.os.Environment
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -62,6 +63,7 @@ object AssetsManager {
 
     fun install(context: Context, asset: Asset, onSuccess: () -> Unit) {
         val directory = context.filesDir
+        val dataDirectory = Environment.getDataDirectory()
         val shell = Runtime.getRuntime()
         clean(context)
         with(DownloadManager.Request(Uri.parse(asset.url))) {
@@ -97,7 +99,7 @@ object AssetsManager {
                                                 .waitFor()
                                         }
                                         shell.exec(
-                                            "./mtk-su -c rm -r /data/adb/",
+                                            "./mtk-su -c rm -rf ${dataDirectory.absolutePath}/adb/",
                                             null,
                                             directory
                                         ).waitFor()
