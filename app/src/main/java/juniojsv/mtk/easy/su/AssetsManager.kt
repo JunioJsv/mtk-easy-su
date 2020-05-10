@@ -13,6 +13,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
@@ -53,7 +54,10 @@ object AssetsManager {
                             }
                         },
                         Response.ErrorListener { error ->
-
+                            "Internet connection required to download assets, ${error.message}".snack(
+                                (context as MainActivity).main_conteiner,
+                                true
+                            )
                         }
                     )
                 )

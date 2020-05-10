@@ -1,14 +1,12 @@
 package juniojsv.mtk.easy.su
 
-import android.content.ClipData
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
+import android.content.*
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,6 +27,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         supportActionBar?.elevation = 0.0f
         preferences = getSharedPreferences("preferences", Context.MODE_PRIVATE)
+
+        if (!preferences.getBoolean("accepted", false))
+            AlertDialog.Builder(this).run {
+                setTitle("Warning")
+                setMessage("Misuse of superuser access can seriously damage your device, moreover you are fully responsible for your device")
+                setPositiveButton("accept") { _, _ ->
+                    preferences.edit().putBoolean("accepted", true).apply()
+                }
+                create().apply { setCanceledOnTouchOutside(false) }
+            }.show()
 
         AssetsManager.getAll(this) { assets ->
             LayoutInflater.from(this).apply {
