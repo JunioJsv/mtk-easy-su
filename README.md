@@ -1,6 +1,6 @@
 # Mtk Easy Su
 - This app set up bootless super user access, with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su, on MediaTek Android devices. To facilitate those wishing to use the security breach Mtk-su by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642).
-- Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases/latest), at your own risk.
+- Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases), at your own risk.
 - I really want to work with something that involves programming, if anyone has any opportunity please contact us, juniojsv@gmail.com
 
 ### Notes :memo:
