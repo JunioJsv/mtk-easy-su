@@ -1,5 +1,5 @@
 # Mtk Easy Su
-[![](https://img.shields.io/github/downloads/JunioJsv/mtk-easy-su/total.svg)](https://github.com/JunioJsv/mtk-easy-su/releases/) [![](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://github.com/JunioJsv/mtk-easy-su) [![](https://img.shields.io/github/stars/JunioJsv/mtk-easy-su.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/JunioJsv/mtk-easy-su/stargazers/)
+[![](https://img.shields.io/github/downloads/JunioJsv/mtk-easy-su/total.svg)](https://github.com/JunioJsv/mtk-easy-su/releases/) [![](https://img.shields.io/badge/Maintained%3F-maybe-blue.svg)](https://github.com/JunioJsv/mtk-easy-su) [![](https://img.shields.io/github/stars/JunioJsv/mtk-easy-su.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/JunioJsv/mtk-easy-su/stargazers/)
 - This app set up bootless super user access, with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su, on MediaTek Android devices. To facilitate those wishing to use the security breach Mtk-su by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642).
 - Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases), at your own risk.
 - I really want to work with something that involves programming, if anyone has any opportunity please contact us, juniojsv@gmail.com
