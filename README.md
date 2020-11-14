@@ -1,7 +1,7 @@
 # Mtk Easy Su
 [![](https://img.shields.io/github/downloads/JunioJsv/mtk-easy-su/total.svg)](https://github.com/JunioJsv/mtk-easy-su/releases/) [![](https://img.shields.io/badge/Maintained%3F-maybe-blue.svg)](https://github.com/JunioJsv/mtk-easy-su) [![](https://img.shields.io/github/stars/JunioJsv/mtk-easy-su.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/JunioJsv/mtk-easy-su/stargazers/)
 
-#### (:warning:__HELP__) I have no computer, my motherboard has stopped working, there is no way to continue with my projects, any donation would help a lot [Mercado Pago](https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=365594257-359f7b8e-cc7c-4ff2-8fd1-4fc73eb6de50) or [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UNXAC9R9MYB8C&source=url) 😢
+#### (:warning:__HELP__) I have no computer, my motherboard has stopped working, there is no way to continue with my projects, any donation would help a lot [Mercado Pago](https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=365594257-359f7b8e-cc7c-4ff2-8fd1-4fc73eb6de50), [PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=UNXAC9R9MYB8C&source=url) or Pix 4df87f82-7f55-4e87-a11d-11a6ecba3fa7
 - This app set up bootless super user access, with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su, on MediaTek Android devices. To facilitate those wishing to use the security breach Mtk-su by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642).
 - Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases), at your own risk.
 - I really want to work with something that involves programming, if anyone has any opportunity please contact us, juniojsv@gmail.com
