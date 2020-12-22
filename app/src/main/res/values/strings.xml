@@ -1,25 +1,33 @@
 <resources>
     <string name="app_name">Mtk Easy Su</string>
-    <string name="try_root_now">Activate bootless root</string>
     <string name="about">
         This app help you to use mtk-su to launch Magisk on compatible devices,
         including locked down ones! It runs entirely from the data partition: no
         need to modify the firmware. Root is available for any app that wants it.
-        But to manage root access for each application, you must download Magisk manager v7.1.1\n\n
-        I really want to work with something that involves programming, if anyone has any
-        opportunity please contact us, juniojsv@gmail.com
+        But to manage root access for each application, you must download Magisk manager v7.1.1
+    </string>
+    <string name="startup_warning">
+        Misuse of superuser access can seriously damage your device, moreover you are fully responsible for your device
     </string>
     <string name="warning">
         Do not update Magisk through Magisk Manager on a locked bootloader or you will brick your device. Including, i
         am not liable for any kind of damage to your device
     </string>
+    <string name="please_wait">Please wait</string>
+    <string name="advertising_id">ca-app-pub-4100401274047460/2396825799</string>
+    <string name="donate_url">https://mpago.la/2anvA1b</string>
+    <string name="github_url">https://github.com/JunioJsv/mtk-easy-su</string>
+    <string name="xda_url">https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703</string>
+    <string name="version">Version</string>
+    <string name="success">Super user permission granted, use the magisk manager to manage</string>
+    <string name="fail">Fail try again</string>
+    <string name="accept">accept</string>
     <string name="about_word">About</string>
     <string name="developers">Developers</string>
-    <string name="magisk">John Wu\nDeveloper of magisk</string>
-    <string name="my_people">JunioJsv\nCreator of this app</string>
+    <string name="john_wu_about">John Wu\nDeveloper of magisk</string>
+    <string name="juniojsv_about">JunioJsv\nCreator of this app</string>
     <string name="mtk_su">Diplomatic\nDeveloper of mtk-su</string>
     <string name="preferences">Preferences</string>
-    <string name="run_on_boot">Run on boot</string>
     <string name="log">Log</string>
     <string name="log_null">$</string>
     <string name="github">Github</string>
@@ -27,9 +35,6 @@
     <string name="todo">TODO</string>
     <string name="copy">copy</string>
     <string name="xda">Xda forum</string>
-    <string name="assets">Assets</string>
-    <string name="install">install</string>
-    <string name="installed">installed</string>
-    <string name="installing">installing</string>
-    <string name="donate">donate</string>
+    <string name="donate">Donate</string>
+    <string name="run_as_64_bits">Run as 64 Bits</string>
 </resources>

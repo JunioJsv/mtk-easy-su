@@ -1,43 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_conteiner"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryColor"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_try_root"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout style="@style/LinearLayoutContainer">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/DevelopersCard"
-                style="@style/CustomCardView">
+            <com.google.android.material.card.MaterialCardView style="@style/CustomCardView">
 
                 <LinearLayout style="@style/CustomCardViewContainer">
 
                     <TextView
-                        android:id="@+id/Developers"
                         style="@style/CustomCardViewTitle"
                         android:text="@string/developers" />
 
-
                     <LinearLayout
-                        android:id="@+id/JohnWu"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/johnwu_img"
                             style="@style/CustomCardViewDeveloperImage"
                             android:background="@color/primaryColor"
                             android:contentDescription="@string/todo"
@@ -45,22 +35,19 @@
                             app:srcCompat="@mipmap/johnwu_img" />
 
                         <TextView
-                            android:id="@+id/johnwu_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:lineSpacingExtra="4sp"
-                            android:text="@string/magisk" />
+                            android:text="@string/john_wu_about" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/Diplomatic"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/diplomatic_img"
                             style="@style/CustomCardViewDeveloperImage"
                             android:background="@color/primaryColor"
                             android:contentDescription="@string/todo"
@@ -68,7 +55,6 @@
                             app:srcCompat="@drawable/ic_person_black_24dp" />
 
                         <TextView
-                            android:id="@+id/diplomatic_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -77,28 +63,25 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/JunioJsv"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/juniojsv_img"
                             style="@style/CustomCardViewDeveloperImage"
                             android:contentDescription="@string/todo"
                             app:srcCompat="@mipmap/juniojsv_img" />
 
                         <TextView
-                            android:id="@+id/juniojsv_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:lineSpacingExtra="4sp"
-                            android:text="@string/my_people" />
+                            android:text="@string/juniojsv_about" />
                     </LinearLayout>
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_donate"
+                        android:id="@+id/mButtonDonate"
                         style="@style/CustomButtonOutlined"
                         android:layout_width="match_parent"
                         android:text="@string/donate"
@@ -106,101 +89,79 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/PreferencesCard"
-                style="@style/CustomCardView">
+            <com.google.android.material.card.MaterialCardView style="@style/CustomCardView">
 
                 <LinearLayout style="@style/CustomCardViewContainer">
 
                     <TextView
-                        android:id="@+id/Preferences"
                         style="@style/CustomCardViewTitle"
                         android:text="@string/preferences" />
 
                     <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switch_run_on_boot"
+                        android:id="@+id/mRunAs64"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/run_on_boot" />
-
-                    <TextView
-                        android:id="@+id/Assets"
-                        style="@style/CustomCardViewTitle"
-                        android:text="@string/assets" />
-
-                    <LinearLayout
-                        android:id="@+id/assets_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
+                        android:text="@string/run_as_64_bits" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/LogCard"
-                style="@style/CustomCardView">
+            <com.google.android.material.card.MaterialCardView style="@style/CustomCardView">
 
                 <LinearLayout style="@style/CustomCardViewContainer">
 
                     <TextView
-                        android:id="@+id/textView6"
                         style="@style/CustomCardViewTitle"
                         android:text="@string/log" />
 
                     <TextView
-                        android:id="@+id/log"
+                        android:id="@+id/mLog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/log_null"
                         android:textIsSelectable="true" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_copy"
+                        android:id="@+id/mButtonCopy"
                         style="@style/CustomButtonOutlined"
                         android:layout_width="match_parent"
+                        android:enabled="false"
                         android:text="@string/copy"
-                        android:visibility="gone"
                         app:icon="@drawable/ic_content_copy_black_24dp" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/AboutCard"
-                style="@style/CustomCardView">
+            <com.google.android.material.card.MaterialCardView style="@style/CustomCardView">
 
                 <LinearLayout style="@style/CustomCardViewContainer">
 
                     <TextView
-                        android:id="@+id/About"
                         style="@style/CustomCardViewTitle"
                         android:text="@string/about_word" />
 
                     <TextView
-                        android:id="@+id/Version"
                         style="@style/CustomCardViewTitleSmall"
                         android:text="@string/app_name" />
 
                     <TextView
-                        android:id="@+id/version_text"
+                        android:id="@+id/mVersion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
-                        android:id="@+id/about_text"
                         style="@style/CustomCardViewText"
                         android:text="@string/about" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_github"
+                        android:id="@+id/mButtonGithub"
                         style="@style/CustomButtonOutlined"
                         android:layout_width="match_parent"
                         android:text="@string/github"
                         app:icon="@drawable/ic_home_black_24dp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_xda"
+                        android:id="@+id/mButtonXda"
                         style="@style/CustomButtonOutlined"
                         android:layout_width="match_parent"
                         android:text="@string/xda"
@@ -208,39 +169,35 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/WarningCard"
-                style="@style/CustomCardView">
+            <com.google.android.material.card.MaterialCardView style="@style/CustomCardView">
 
                 <LinearLayout style="@style/CustomCardViewContainer">
 
                     <TextView
-                        android:id="@+id/Warning"
                         style="@style/CustomCardViewTitle"
                         android:text="@string/warning_word" />
 
                     <TextView
-                        android:id="@+id/warning_text"
                         style="@style/CustomCardViewText"
                         android:text="@string/warning" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="80dp"/>
         </LinearLayout>
     </ScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_try_root"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-        android:layout_width="0dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mButtonTryRoot"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/try_root_now"
-        app:icon="@drawable/ic_launcher_foreground"
-        app:iconPadding="0dp"
-        app:iconSize="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_gravity="end|bottom"
+        android:elevation="8dp"
+        android:layout_margin="24dp"
+        android:src="@drawable/ic_launcher_foreground"
+        app:maxImageSize="48dp"
+        app:tint="@android:color/white" />
+
+
+</FrameLayout>
