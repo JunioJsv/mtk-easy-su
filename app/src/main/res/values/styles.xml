@@ -3,7 +3,8 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-        <item name="colorAccent">@color/primaryLightColor</item>
+        <item name="colorAccent">@color/primaryColor</item>
+        <item name="colorSecondary">@color/primaryColor</item>
     </style>
 
     <style name="CustomCardView">
@@ -61,9 +62,6 @@
 
     <style name="CustomButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/primaryColor</item>
-        <item name="strokeColor">@color/primaryColor</item>
-        <item name="iconTint">@color/primaryColor</item>
         <item name="cornerRadius">8dp</item>
     </style>
 
