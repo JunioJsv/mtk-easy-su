@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">
+        Это приложение призвано помочь вам использовать mtk-su для загрузки Magisk на совместимых устройствах,
+        включая заблокированные загрузчики! Он выполняется полностью из раздела данных: нет
+        нужно доработать прошивку. Root доступен для любого приложения, которое вы хотите.
+        Но для управления корневым доступом для каждого приложения необходимо скачать Magisk manager v7.1.1
+    </string>
+    <string name="startup_warning">
+        Неправильное использование доступа суперпользователя может серьезно повредить ваше устройство,
+        имейте в виду, что вы несете ответственность за свое устройство
+    </string>
+    <string name="warning">
+        Не обновляйте Magisk через Magisk Manager на заблокированном загрузчике, потому что есть шанс заблокировать ваше устройство.
+        Кстати, я не несу ответственности ни за какие повреждения вашего устройства
+    </string>
+    <string name="success">
+        Разрешение суперпользователя предоставлено, используйте диспетчер Magisk для управления</string>
+    <string name="john_wu_about">John Wu\nРазработчик Magisk</string>
+    <string name="juniojsv_about">JunioJsv\nРазработчик этого приложения</string>
+    <string name="mtk_su">Diplomatic\nРазработчик mtk-su</string>
+    <string name="app_name">Mtk Easy Su</string>
+    <string name="please_wait">пожалуйста, подождите</string>
+    <string name="version">Версия</string>
+    <string name="accept">Принять</string>
+    <string name="about_word">На</string>
+    <string name="developers">Разработчики</string>
+    <string name="preferences">Предпочтение</string>
+    <string name="warning_word">Уведомление</string>
+    <string name="copy">Копировать</string>
+    <string name="donate">Пожертвовать</string>
+    <string name="run_as_64_bits">Запускать как 64 Bits</string>
+    <string name="xda">Xda форум</string>
+    <string name="fail">Ошибка, попробуйте еще раз</string>
+    <string name="log">Запись</string>
+</resources>

@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         mButtonTryRoot.setOnClickListener { button ->
             advertising?.loadAd(AdRequest.Builder().build())
             button.isEnabled = false
-            MtkSuHandler(this) { result, log ->
+            ExploitHandler(this) { result, log ->
                 mLog.text = log
                 mButtonCopy.isEnabled = true
                 button.isEnabled = true

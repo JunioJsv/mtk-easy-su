@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -182,9 +181,10 @@
                         android:text="@string/warning" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
             <Space
                 android:layout_width="0dp"
-                android:layout_height="80dp"/>
+                android:layout_height="80dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -193,11 +193,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:elevation="8dp"
         android:layout_margin="24dp"
+        android:elevation="8dp"
         android:src="@drawable/ic_launcher_foreground"
         app:maxImageSize="48dp"
-        app:tint="@android:color/white" />
+        app:tint="@android:color/white"
+        tools:ignore="ContentDescription" />
 
-
-</FrameLayout>
+</merge>

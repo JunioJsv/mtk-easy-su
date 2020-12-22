@@ -14,25 +14,26 @@
         am not liable for any kind of damage to your device
     </string>
     <string name="please_wait">Please wait</string>
-    <string name="advertising_id">ca-app-pub-4100401274047460/2396825799</string>
-    <string name="donate_url">https://mpago.la/2anvA1b</string>
-    <string name="github_url">https://github.com/JunioJsv/mtk-easy-su</string>
-    <string name="xda_url">https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703</string>
+    <string name="application_advertising_id" translatable="false">ca-app-pub-4100401274047460~8660712784</string>
+    <string name="advertising_id" translatable="false">ca-app-pub-4100401274047460/2396825799</string>
+    <string name="donate_url" translatable="false">https://mpago.la/2anvA1b</string>
+    <string name="github_url" translatable="false">https://github.com/JunioJsv/mtk-easy-su</string>
+    <string name="xda_url" translatable="false">https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703</string>
     <string name="version">Version</string>
     <string name="success">Super user permission granted, use the magisk manager to manage</string>
     <string name="fail">Fail try again</string>
     <string name="accept">accept</string>
     <string name="about_word">About</string>
     <string name="developers">Developers</string>
-    <string name="john_wu_about">John Wu\nDeveloper of magisk</string>
+    <string name="john_wu_about">John Wu\nDeveloper of Magisk</string>
     <string name="juniojsv_about">JunioJsv\nCreator of this app</string>
     <string name="mtk_su">Diplomatic\nDeveloper of mtk-su</string>
     <string name="preferences">Preferences</string>
     <string name="log">Log</string>
-    <string name="log_null">$</string>
-    <string name="github">Github</string>
+    <string name="log_null" translatable="false">$</string>
+    <string name="github" translatable="false">Github</string>
     <string name="warning_word">Warning</string>
-    <string name="todo">TODO</string>
+    <string name="todo" translatable="false">TODO</string>
     <string name="copy">copy</string>
     <string name="xda">Xda forum</string>
     <string name="donate">Donate</string>

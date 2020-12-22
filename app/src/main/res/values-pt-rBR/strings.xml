@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about">
+        Este aplicativo visa ajudar você a usar o mtk-su para inicializar o Magisk em dispositivos compatíveis,
+        incluindo aqueles bootloader bloqueados! Ele é executado inteiramente a partir da partição de dados: não
+        precisa modificar o firmware. O Root está disponível para qualquer aplicativo que desejar.
+        Mas para gerenciar o acesso root para cada aplicativo, você deve baixar Magisk manager v7.1.1
+    </string>
+    <string name="startup_warning">
+        O uso indevido do acesso super usuário pode danificar seriamente o seu dispositivo,
+        tenha em mente que você é o responsável pelo seu dispositivo
+    </string>
+    <string name="warning">
+        Não atualize o Magisk através do Magisk Manager em um bootloader bloqueado, porque a chances de brickar seu dispositivo.
+        Aliás, não sou responsável por qualquer tipo de dano ao seu dispositivo
+    </string>
+    <string name="success">
+        Permissão de super usuário concedida, use o Magisk manager para gerenciar</string>
+    <string name="john_wu_about">John Wu\nDesenvolvedor do Magisk</string>
+    <string name="juniojsv_about">JunioJsv\nDesenvolvedor deste aplicativo</string>
+    <string name="mtk_su">Diplomatic\nDesenvolvedor do mtk-su</string>
+    <string name="app_name">Mtk Easy Su</string>
+    <string name="please_wait">Por favor, aguarde</string>
+    <string name="version">Versão</string>
+    <string name="accept">Aceitar</string>
+    <string name="about_word">Sobre</string>
+    <string name="developers">Desenvolvedores</string>
+    <string name="preferences">Preferência</string>
+    <string name="warning_word">Aviso</string>
+    <string name="copy">Copiar</string>
+    <string name="donate">Doar</string>
+    <string name="run_as_64_bits">Executar como 64 Bits</string>
+    <string name="xda">Xda fórum</string>
+    <string name="fail">Falha, tente novamente</string>
+    <string name="log">Registro</string>
+</resources>
