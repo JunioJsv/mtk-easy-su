@@ -2,6 +2,7 @@
 [![](https://img.shields.io/github/downloads/JunioJsv/mtk-easy-su/total.svg)](https://github.com/JunioJsv/mtk-easy-su/releases/) [![](https://img.shields.io/badge/maintained-yes-yellow.svg)](https://github.com/JunioJsv/mtk-easy-su)
 
 - This app set up bootless super user access, with [Magisk](https://github.com/topjohnwu/Magisk) and Mtk-su, on MediaTek Android devices. To facilitate those wishing to use the security breach Mtk-su by [Diplomatic](https://forum.xda-developers.com/member.php?u=8132642).
+- If you are a more advanced user. I recommend using the [mtk-su](https://forum.xda-developers.com/t/amazing-temp-root-for-mediatek-armv8-2020-08-24.3922213/) tool from the terminal, you will have more possibilities and control over the process.
 - Download the latest version [here](https://github.com/JunioJsv/mediatek-easy-root/releases), at your own risk.
 
 ### Notes :memo:
