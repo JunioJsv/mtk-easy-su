@@ -18,6 +18,7 @@
     <string name="advertising_id" translatable="false">ca-app-pub-4100401274047460/2396825799</string>
     <string name="donate_url" translatable="false">https://mpago.la/2anvA1b</string>
     <string name="github_url" translatable="false">https://github.com/JunioJsv/mtk-easy-su</string>
+    <string name="github_api_entry" translatable="false">https://api.github.com/repos/juniojsv/mtk-easy-su</string>
     <string name="xda_url" translatable="false">https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703</string>
     <string name="version">Version</string>
     <string name="success">Super user permission granted, use the magisk manager to manage</string>
@@ -38,4 +39,6 @@
     <string name="xda">Xda forum</string>
     <string name="donate">Donate</string>
     <string name="run_as_64_bits">Run as 64 Bits</string>
+    <string name="new_version_available">New version available</string>
+    <string name="download">Download</string>
 </resources>

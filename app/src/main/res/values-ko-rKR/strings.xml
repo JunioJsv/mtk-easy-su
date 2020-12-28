@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> <!-- translated by choiman1559 -->
+    <string name="app_name">Mtk Easy Su</string>
+    <string name="about">
+        이 앱은 mtk-su를 사용하여 부트로더가 잠긴 기기를 포함한 호환 장치에서 Magisk를 실행하도록 도와줍니다.
+        이 앱은 전적으로 데이터 파티션에서 실행되며, 펌웨어를 수정할 필요가 없습니다.
+        루트 권한은 원하는 모든 앱에서 사용할 수 있으나, 각 애플리케이션의 루트 액세스를 관리하려면 Magisk manager 를 다운로드해야합니다.
+    </string>
+    <string name="startup_warning">
+        슈퍼유저 권한의 오사용은 기기에 문제를 일으킬 수 있으며, 그에 따른 책임은 전적으로 사용자 본인에게 있습니다.
+    </string>
+    <string name="warning">
+        매지스크 매니저를 통해 매지스크를 업데이트 하지 마세요. 기기에 소프트브릭 현상 등이 발생될수 있으며, 개발자는 어떠한 경우에도 책임을 지지 않습니다.
+    </string>
+    <string name="please_wait">잠시 기다려주세요</string>
+    <string name="version">버전</string>
+    <string name="success">슈퍼유저 적용됨, 매지스크 매니저를 이용해 관리하세요</string>
+    <string name="fail">적용 실패, 다시 시도하세요</string>
+    <string name="accept">확인</string>
+    <string name="about_word">정보</string>
+    <string name="developers">개발진</string>
+    <string name="john_wu_about">John Wu\nMagisk 개발자</string>
+    <string name="juniojsv_about">JunioJsv\n이 앱의 개발자</string>
+    <string name="mtk_su">Diplomatic\nmtk-su의 개발자</string>
+    <string name="preferences">설정</string>
+    <string name="log">로그</string>
+    <string name="warning_word">경고</string>
+    <string name="copy">복사</string>
+    <string name="xda">Xda 포럼</string>
+    <string name="donate">기부하기</string>
+    <string name="run_as_64_bits">64 비트로 실행</string>
+    <string name="new_version_available">새 버전 사용 가능</string>
+    <string name="download">다운로드</string>
+</resources>

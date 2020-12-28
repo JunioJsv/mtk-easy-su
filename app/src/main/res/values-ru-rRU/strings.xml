@@ -29,8 +29,10 @@
     <string name="warning_word">Уведомление</string>
     <string name="copy">Копировать</string>
     <string name="donate">Пожертвовать</string>
-    <string name="run_as_64_bits">Запускать как 64 Bits</string>
+    <string name="run_as_64_bits">Запускать как 64 битный</string>
     <string name="xda">Xda форум</string>
     <string name="fail">Ошибка, попробуйте еще раз</string>
     <string name="log">Запись</string>
+    <string name="new_version_available">доступна новая версия</string>
+    <string name="download">скачать</string>
 </resources>

@@ -33,4 +33,6 @@
     <string name="xda">Xda fórum</string>
     <string name="fail">Falha, tente novamente</string>
     <string name="log">Registro</string>
+    <string name="new_version_available">Nova versão disponível</string>
+    <string name="download">Baixar</string>
 </resources>

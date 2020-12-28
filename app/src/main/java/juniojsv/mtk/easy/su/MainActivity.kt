@@ -3,29 +3,67 @@ package juniojsv.mtk.easy.su
 import android.content.*
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import com.google.android.gms.ads.*
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.InterstitialAd
+import com.google.android.gms.ads.MobileAds
+import juniojsv.mtk.easy.su.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
+import org.json.JSONObject
+import java.net.URL
+import kotlin.coroutines.CoroutineContext
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var preferences: SharedPreferences
     private var advertising: InterstitialAd? = null
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        supportActionBar?.elevation = 0.0f
+
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         preferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
 
-        MobileAds.initialize(this) {
-            advertising = InterstitialAd(this).apply {
-                adUnitId = getString(R.string.advertising_id)
-                adListener = object : AdListener() {
-                    override fun onAdLoaded() = show()
+        try {
+            MobileAds.initialize(this) {
+                advertising = InterstitialAd(this).apply {
+                    adUnitId = getString(R.string.advertising_id)
+                    adListener = object : AdListener() {
+                        override fun onAdLoaded() = show()
+                    }
                 }
+            }
+        } catch (e: Exception) {
+            Log.e("admob_initialization", "${e.message}")
+        }
+
+        launch {
+            try {
+                val response =
+                    URL("${getString(R.string.github_api_entry)}/releases/latest").readText()
+                val latest =
+                    JSONObject(response).getString("tag_name").filter { it.isDigit() }.toInt()
+                val current = BuildConfig.VERSION_NAME.filter { it.isDigit() }.toInt()
+
+                if (current < latest)
+                    getString(R.string.new_version_available).snack(
+                        binding.mRootView, true, getString(R.string.download)
+                    ) {
+                        startActivity(Intent(Intent.ACTION_VIEW).apply {
+                            data =
+                                Uri.parse("${getString(R.string.github_url)}/releases/latest")
+                        })
+                    }
+            } catch (e: Exception) {
+                Log.e("verity_update", "${e.message}")
             }
         }
 
@@ -41,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                 create().apply { setCanceledOnTouchOutside(false) }
             }.show()
 
-        mRunAs64.apply {
+        binding.mRunAs64.apply {
             isChecked = preferences.getBoolean("run_as_64", false)
             setOnCheckedChangeListener { _, isChecked ->
                 preferences.edit(true) {
@@ -50,33 +88,37 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mVersion.text =
-            String.format("%s %s", getString(R.string.version), BuildConfig.VERSION_NAME)
+        binding.mVersion.text =
+            String.format(
+                "%s %s",
+                getString(R.string.version),
+                BuildConfig.VERSION_NAME
+            )
 
-        mButtonDonate.setOnClickListener {
+        binding.mButtonDonate.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(getString(R.string.donate_url))
             })
         }
 
-        mButtonGithub.setOnClickListener {
+        binding.mButtonGithub.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(getString(R.string.github_url))
             })
         }
 
-        mButtonXda.setOnClickListener {
+        binding.mButtonXda.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse(getString(R.string.xda_url))
             })
         }
 
-        mButtonTryRoot.setOnClickListener { button ->
+        binding.mButtonTryRoot.setOnClickListener { button ->
             advertising?.loadAd(AdRequest.Builder().build())
             button.isEnabled = false
-            ExploitHandler(this) { result, log ->
-                mLog.text = log
-                mButtonCopy.isEnabled = true
+            ExploitHandler(applicationContext) { result, log ->
+                binding.mLog.text = log
+                binding.mButtonCopy.isEnabled = true
                 button.isEnabled = true
                 if (result)
                     getString(R.string.success).toast(this, true)
@@ -86,9 +128,9 @@ class MainActivity : AppCompatActivity() {
             }.execute()
         }
 
-        mButtonCopy.setOnClickListener {
+        binding.mButtonCopy.setOnClickListener {
             (getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager)
-                .setPrimaryClip(ClipData.newPlainText(getString(R.string.log), mLog.text))
+                .setPrimaryClip(ClipData.newPlainText(getString(R.string.log), binding.mLog.text))
         }
     }
 
