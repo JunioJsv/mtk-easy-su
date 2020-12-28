@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.elevation = 0.0f
         preferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
-        binding = ActivityMainBinding.inflate(layoutInflater,window.decorView.rootView as ViewGroup)
+        binding = ActivityMainBinding.inflate(layoutInflater,findViewById(android.R.id.content))
 
         MobileAds.initialize(this) {
             advertising = InterstitialAd(this).apply {
