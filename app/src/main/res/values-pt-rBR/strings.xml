@@ -35,6 +35,7 @@
     <string name="log">Registro</string>
     <string name="new_version_available">Nova versão disponível</string>
     <string name="download">Baixar</string>
-    <string name="dialog_close">close</string>
-    <string name="dialog_security_patch" >The security patch date is after 2020–03–01. Please try again after firmware downgrade.</string>
+    <string name="close">Fechar</string>
+    <string name="security_patch_warning">A data do security patch é após março de 2020. Por favor tente novamente após um firmware downgrade</string>
+    <string name="ignore">Ignorar</string>
 </resources>
