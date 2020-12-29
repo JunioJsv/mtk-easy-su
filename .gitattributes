@@ -1,1 +1,2 @@
 app/src/main/assets/**/* filter=lfs diff=lfs merge=lfs -text
+/home/cuj1559/바탕화면/mtk-easy-su-project/mtk-easy-su/app/src/main/assets filter=lfs diff=lfs merge=lfs -text
