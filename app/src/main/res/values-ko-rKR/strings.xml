@@ -31,4 +31,6 @@
     <string name="run_as_64_bits">64 비트로 실행</string>
     <string name="new_version_available">새 버전 사용 가능</string>
     <string name="download">다운로드</string>
+    <string name="dialog_close">닫기</string>
+    <string name="dialog_security_patch" >보안 패치 수준이 2020–03–01 이후입니다. 펌웨어 다운그레이드 후 재시도 바랍니다.</string>
 </resources>

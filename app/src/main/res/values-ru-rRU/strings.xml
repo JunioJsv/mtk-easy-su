@@ -35,4 +35,6 @@
     <string name="log">Запись</string>
     <string name="new_version_available">доступна новая версия</string>
     <string name="download">скачать</string>
+    <string name="dialog_close">close</string>
+    <string name="dialog_security_patch" >Дата исправления безопасности – после 2020–03–01. Повторите попытку после перехода на более раннюю версию прошивки.</string>
 </resources>
