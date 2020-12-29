@@ -2,6 +2,7 @@ package juniojsv.mtk.easy.su
 
 import android.content.*
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
@@ -17,7 +18,6 @@ import org.json.JSONObject
 import java.net.URL
 import kotlin.coroutines.CoroutineContext
 
-
 class MainActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var preferences: SharedPreferences
     private var advertising: InterstitialAd? = null
@@ -26,6 +26,17 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-","").toInt() >= 20200301) {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle(getString(R.string.warning_word))
+            builder.setMessage(R.string.dialog_security_patch)
+            builder.setCancelable(false)
+            builder.setPositiveButton(getString(R.string.dialog_close)) { _, _ ->
+                finishAndRemoveTask()
+            }
+            builder.show()
+        }
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
