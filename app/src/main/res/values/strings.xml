@@ -41,6 +41,7 @@
     <string name="run_as_64_bits">Run as 64 Bits</string>
     <string name="new_version_available">New version available</string>
     <string name="download">Download</string>
-    <string name="dialog_close">close</string>
-    <string name="dialog_security_patch" >The security patch date is after 2020–03–01. Please try again after firmware downgrade.</string>
+    <string name="close">Close</string>
+    <string name="security_patch_warning">The security patch date is after March 2020. Please try again after a firmware downgrade</string>
+    <string name="ignore">Ignore</string>
 </resources>

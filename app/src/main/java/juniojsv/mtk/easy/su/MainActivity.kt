@@ -27,21 +27,27 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-","").toInt() >= 20200301) {
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle(getString(R.string.warning_word))
-            builder.setMessage(R.string.dialog_security_patch)
-            builder.setCancelable(false)
-            builder.setPositiveButton(getString(R.string.dialog_close)) { _, _ ->
-                finishAndRemoveTask()
-            }
-            builder.show()
-        }
-
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         preferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+
+        if (Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-", "").toInt() >= 20200301 &&
+            !preferences.getBoolean(PREF_SECURITY_PATCH_IGNORED, false)) {
+            AlertDialog.Builder(this).run {
+                setTitle(R.string.warning_word)
+                setMessage(R.string.security_patch_warning)
+                setPositiveButton(R.string.close) { _, _ ->
+                    finishAndRemoveTask()
+                }
+                setNegativeButton(getText(R.string.ignore)) { _, _ ->
+                    preferences.edit(true) {
+                        putBoolean(PREF_SECURITY_PATCH_IGNORED, true)
+                    }
+                }
+                create().apply { setCanceledOnTouchOutside(false) }
+            }.show()
+        }
 
         try {
             MobileAds.initialize(this) {
@@ -53,7 +59,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 }
             }
         } catch (e: Exception) {
-            Log.e("admob_initialization", "${e.message}")
+            Log.e(LOG_ADMOB_INITIALIZATION, "${e.message}")
         }
 
         launch {
@@ -74,27 +80,27 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                         })
                     }
             } catch (e: Exception) {
-                Log.e("verity_update", "${e.message}")
+                Log.e(LOG_VERITY_UPDATE, "${e.message}")
             }
         }
 
-        if (!preferences.getBoolean("startup_warning", false))
+        if (!preferences.getBoolean(PREF_STARTUP_WARNING, false))
             AlertDialog.Builder(this).run {
                 setTitle(getString(R.string.warning_word))
                 setMessage(getString(R.string.startup_warning))
                 setPositiveButton(getString(R.string.accept)) { _, _ ->
                     preferences.edit(true) {
-                        putBoolean("startup_warning", true)
+                        putBoolean(PREF_STARTUP_WARNING, true)
                     }
                 }
                 create().apply { setCanceledOnTouchOutside(false) }
             }.show()
 
         binding.mRunAs64.apply {
-            isChecked = preferences.getBoolean("run_as_64", false)
+            isChecked = preferences.getBoolean(PREF_RUN_AS_64_BITS, false)
             setOnCheckedChangeListener { _, isChecked ->
                 preferences.edit(true) {
-                    putBoolean("run_as_64", isChecked)
+                    putBoolean(PREF_RUN_AS_64_BITS, isChecked)
                 }
             }
         }
@@ -127,11 +133,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         binding.mButtonTryRoot.setOnClickListener { button ->
             advertising?.loadAd(AdRequest.Builder().build())
             button.isEnabled = false
-            ExploitHandler(applicationContext) { result, log ->
-                binding.mLog.text = log
+            ExploitHandler(this) { result ->
+                binding.mLog.text = result.log
                 binding.mButtonCopy.isEnabled = true
                 button.isEnabled = true
-                if (result)
+                if (result.wasSucceeded)
                     getString(R.string.success).toast(this, true)
                 else
                     getString(R.string.fail).toast(this, false)
