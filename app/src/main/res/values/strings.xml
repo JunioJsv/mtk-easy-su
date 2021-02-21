@@ -4,7 +4,7 @@
         This app help you to use mtk-su to launch Magisk on compatible devices,
         including locked down ones! It runs entirely from the data partition: no
         need to modify the firmware. Root is available for any app that wants it.
-        But to manage root access for each application, you must download Magisk manager v7.1.1
+        But to manage root access for each application, you must download Magisk manager
     </string>
     <string name="startup_warning">
         Misuse of superuser access can seriously damage your device, moreover you are fully responsible for your device
@@ -44,4 +44,6 @@
     <string name="close">Close</string>
     <string name="security_patch_warning">The security patch date is after March 2020. Please try again after a firmware downgrade</string>
     <string name="ignore">Ignore</string>
+    <string name="terminal">terminal</string>
+    <string name="tip_here">tip here</string>
 </resources>

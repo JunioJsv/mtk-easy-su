@@ -4,7 +4,7 @@
         Este aplicativo visa ajudar você a usar o mtk-su para inicializar o Magisk em dispositivos compatíveis,
         incluindo aqueles bootloader bloqueados! Ele é executado inteiramente a partir da partição de dados: não
         precisa modificar o firmware. O Root está disponível para qualquer aplicativo que desejar.
-        Mas para gerenciar o acesso root para cada aplicativo, você deve baixar Magisk manager v7.1.1
+        Mas para gerenciar o acesso root para cada aplicativo, você deve baixar Magisk manager
     </string>
     <string name="startup_warning">
         O uso indevido do acesso super usuário pode danificar seriamente o seu dispositivo,
@@ -38,4 +38,6 @@
     <string name="close">Fechar</string>
     <string name="security_patch_warning">A data do security patch é após março de 2020. Por favor tente novamente após um firmware downgrade</string>
     <string name="ignore">Ignorar</string>
+    <string name="terminal">terminal</string>
+    <string name="tip_here">tip here</string>
 </resources>

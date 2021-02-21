@@ -8,12 +8,13 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.InterstitialAd
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import juniojsv.mtk.easy.su.databinding.ActivityMainBinding
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import java.net.URL
 import kotlin.coroutines.CoroutineContext
@@ -32,8 +33,10 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         preferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
 
-        if (Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-", "").toInt() >= 20200301 &&
-            !preferences.getBoolean(PREF_SECURITY_PATCH_IGNORED, false)) {
+        if (Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-", "")
+                .toInt() >= 20200301 &&
+            !preferences.getBoolean(PREF_SECURITY_PATCH_IGNORED, false)
+        ) {
             AlertDialog.Builder(this).run {
                 setTitle(R.string.warning_word)
                 setMessage(R.string.security_patch_warning)
@@ -51,11 +54,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         try {
             MobileAds.initialize(this) {
-                advertising = InterstitialAd(this).apply {
-                    adUnitId = getString(R.string.advertising_id)
-                    adListener = object : AdListener() {
-                        override fun onAdLoaded() = show()
-                    }
+                if (BuildConfig.DEBUG) {
+                    MobileAds.setRequestConfiguration(
+                        RequestConfiguration.Builder().setTestDeviceIds(
+                            mutableListOf(BuildConfig.ADMOB_TEST_DEVICE)
+                        ).build()
+                    )
                 }
             }
         } catch (e: Exception) {
@@ -131,7 +135,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         binding.mButtonTryRoot.setOnClickListener { button ->
-            advertising?.loadAd(AdRequest.Builder().build())
+            loadNewAdvertising()
             button.isEnabled = false
             ExploitHandler(this) { result ->
                 binding.mLog.text = result.log
@@ -150,5 +154,23 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 .setPrimaryClip(ClipData.newPlainText(getString(R.string.log), binding.mLog.text))
         }
     }
+
+    private fun loadNewAdvertising() = InterstitialAd.load(this, getString(R.string.advertising_id),
+        AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
+            override fun onAdLoaded(interstitial: InterstitialAd) {
+                advertising = interstitial
+                advertising
+                    ?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                    override fun onAdDismissedFullScreenContent() {
+                        advertising = null
+                    }
+                }
+                advertising?.show(this@MainActivity)
+            }
+
+            override fun onAdFailedToLoad(error: LoadAdError) {
+                advertising = null
+            }
+        })
 
 }
