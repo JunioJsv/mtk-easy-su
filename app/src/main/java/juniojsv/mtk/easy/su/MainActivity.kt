@@ -15,6 +15,7 @@ import juniojsv.mtk.easy.su.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.URL
 import kotlin.coroutines.CoroutineContext
@@ -75,13 +76,15 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 val current = BuildConfig.VERSION_NAME.filter { it.isDigit() }.toInt()
 
                 if (current < latest)
-                    getString(R.string.new_version_available).snack(
-                        binding.mRootView, true, getString(R.string.download)
-                    ) {
-                        startActivity(Intent(Intent.ACTION_VIEW).apply {
-                            data =
-                                Uri.parse("${getString(R.string.github_url)}/releases/latest")
-                        })
+                    withContext(Dispatchers.Main) {
+                        getString(R.string.new_version_available).snack(
+                            binding.root, true, getString(R.string.download)
+                        ) {
+                            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                                data =
+                                    Uri.parse("${getString(R.string.github_url)}/releases/latest")
+                            })
+                        }
                     }
             } catch (e: Exception) {
                 Log.e(LOG_VERITY_UPDATE, "${e.message}")
@@ -135,18 +138,19 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         binding.mButtonTryRoot.setOnClickListener { button ->
-            loadNewAdvertising()
             button.isEnabled = false
-            ExploitHandler(this) { result ->
-                binding.mLog.text = result.log
-                binding.mButtonCopy.isEnabled = true
-                button.isEnabled = true
-                if (result.wasSucceeded)
-                    getString(R.string.success).toast(this, true)
-                else
-                    getString(R.string.fail).toast(this, false)
-
-            }.execute()
+            loadNewAdvertising {
+                ExploitHandler(this) { result ->
+                    advertising?.show(this)
+                    binding.mLog.text = result.log
+                    binding.mButtonCopy.isEnabled = true
+                    button.isEnabled = true
+                    if (result.wasSucceeded)
+                        getString(R.string.success).toast(this, true)
+                    else
+                        getString(R.string.fail).toast(this, false)
+                }.execute()
+            }
         }
 
         binding.mButtonCopy.setOnClickListener {
@@ -155,7 +159,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    private fun loadNewAdvertising() = InterstitialAd.load(this, getString(R.string.advertising_id),
+    private fun loadNewAdvertising(onLoadedOrError: () -> Unit) = InterstitialAd.load(this, getString(R.string.advertising_id),
         AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(interstitial: InterstitialAd) {
                 advertising = interstitial
@@ -165,11 +169,12 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                         advertising = null
                     }
                 }
-                advertising?.show(this@MainActivity)
+                onLoadedOrError()
             }
 
             override fun onAdFailedToLoad(error: LoadAdError) {
                 advertising = null
+                onLoadedOrError()
             }
         })
 
