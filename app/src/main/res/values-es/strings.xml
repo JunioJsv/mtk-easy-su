@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Mtk Easy Su</string>
+    <string name="about">
+        This app help you to use mtk-su to launch Magisk on compatible devices,
+        including locked down ones! It runs entirely from the data partition: no
+        need to modify the firmware. Root is available for any app that wants it.
+        But to manage root access for each application, you must download Magisk manager
+    </string>
+    <string name="startup_warning">
+        Misuse of superuser access can seriously damage your device, moreover you are fully responsible for your device
+    </string>
+    <string name="warning">
+        No actualice Magisk a través de Magisk Manager en un bootloader bloqueado o vas a brickear tu dispositivo. Incluso, no
+        soy responsable de cualquier daño a tu dispositivo.
+    </string>
+    <string name="please_wait">Por favor, espere</string>
+    <string name="application_advertising_id" translatable="false">ca-app-pub-4100401274047460~8660712784</string>
+    <string name="advertising_id" translatable="false">ca-app-pub-4100401274047460/2396825799</string>
+    <string name="donate_url" translatable="false">https://mpago.la/2anvA1b</string>
+    <string name="github_url" translatable="false">https://github.com/JunioJsv/mtk-easy-su</string>
+    <string name="github_api_entry" translatable="false">https://api.github.com/repos/juniojsv/mtk-easy-su</string>
+    <string name="xda_url" translatable="false">https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703</string>
+    <string name="version">Versión</string>
+    <string name="success">Se te dió el superusuario, usa Magisk Manager para administrar el Root</string>
+    <string name="fail">Hubo un fallo, inténtalo de nuevo.</string>
+    <string name="accept">Aceptar</string>
+    <string name="about_word">Sobre</string>
+    <string name="developers">Developers</string>
+    <string name="john_wu_about">John Wu\nDeveloper of Magisk</string>
+    <string name="juniojsv_about">JunioJsv\nCreator of this app</string>
+    <string name="mtk_su">Diplomatic\nDeveloper of mtk-su</string>
+    <string name="preferences">Preferencias</string>
+    <string name="log">Registro</string>
+    <string name="log_null" translatable="false">$</string>
+    <string name="github" translatable="false">Github</string>
+    <string name="warning_word">Advertencia</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="copy">copiar</string>
+    <string name="xda">Xda forum</string>
+    <string name="donate">Donar</string>
+    <string name="run_as_64_bits">Compilar como 64 Bits</string>
+    <string name="new_version_available">Hay una nueva versión</string>
+    <string name="download">Descargar</string>
+    <string name="close">Cerrar</string>
+    <string name="security_patch_warning">The security patch date is after March 2020. Please try again after a firmware downgrade</string>
+    <string name="ignore">Ignorar</string>
+    <string name="terminal">terminal</string>
+    <string name="tip_here">escribe aquí</string>
+</resources>
