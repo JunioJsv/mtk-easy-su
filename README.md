@@ -24,6 +24,7 @@ Exit value 0
 ### Tested devices :heavy_check_mark:
 |      Device     |  Model  |      Chipset     |  Result |
 |-----------------|:-------:|:----------------:|:-------:|
+| Lg X Power2     |  M320N  |  MediaTek MT6750 | Success |
 | Lg K10          |  M250DS |  MediaTek MT6750 | Success |
 | Lg K10 Power    |  M320TV |  MediaTek MT6750 | Success |
 | Lg K10 TV       | K430DSF |  MediaTek MT6753 | Success |
