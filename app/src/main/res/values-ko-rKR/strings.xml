@@ -12,6 +12,7 @@
     <string name="warning">
         매지스크 매니저를 통해 매지스크를 업데이트 하지 마세요. 기기에 소프트브릭 현상 등이 발생될수 있으며, 개발자는 어떠한 경우에도 책임을 지지 않습니다
     </string>
+    <string name="executing_script">스크립트 실행</string>
     <string name="please_wait">잠시 기다려주세요</string>
     <string name="version">버전</string>
     <string name="success">슈퍼유저 적용됨, 매지스크 매니저를 이용해 관리하세요</string>

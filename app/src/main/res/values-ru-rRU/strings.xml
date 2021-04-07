@@ -20,6 +20,7 @@
     <string name="juniojsv_about">JunioJsv\nРазработчик этого приложения</string>
     <string name="mtk_su">Diplomatic\nРазработчик mtk-su</string>
     <string name="app_name">Mtk Easy Su</string>
+    <string name="executing_script">Выполнение скрипта</string>
     <string name="please_wait">пожалуйста, подождите</string>
     <string name="version">Версия</string>
     <string name="accept">Принять</string>

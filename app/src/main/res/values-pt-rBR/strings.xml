@@ -40,4 +40,5 @@
     <string name="ignore">Ignorar</string>
     <string name="terminal">terminal</string>
     <string name="tip_here">tip here</string>
+    <string name="executing_script">Executando script</string>
 </resources>

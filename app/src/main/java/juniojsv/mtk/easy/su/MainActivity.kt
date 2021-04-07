@@ -138,6 +138,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         binding.mButtonTryRoot.setOnClickListener { button ->
+            getString(R.string.please_wait).toast(this, true)
             button.isEnabled = false
             loadNewAdvertising {
                 ExploitHandler(this) { result ->
