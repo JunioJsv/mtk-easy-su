@@ -1,6 +1,8 @@
 buildscript {
     ext.kotlin_version = '1.4.21'
     ext.adbmob_test_device = System.getenv('ADMOB_TEST_DEVICE')
+    ext.json_bin_secret_key = System.getenv('JSON_BIN_SECRET_KEY')
+    ext.json_bin_mtk_easy_su_collection_id = System.getenv('JSON_BIN_MTK_EASY_SU_COLLECTION_ID')
     repositories {
         google()
         jcenter()

@@ -24,7 +24,7 @@ fun Process.getOutput(): String {
         else break
     }
     waitFor().also { exit ->
-        return "$log" + "exit: $exit"
+        return "[$exit] $log\n"
     }
 }
 

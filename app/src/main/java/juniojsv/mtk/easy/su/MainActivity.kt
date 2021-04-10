@@ -11,6 +11,8 @@ import androidx.core.content.edit
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import io.github.rybalkinsd.kohttp.ext.asString
+import io.github.rybalkinsd.kohttp.ext.httpGet
 import juniojsv.mtk.easy.su.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,6 +20,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import java.net.URL
+import java.time.LocalDateTime
+import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
@@ -70,9 +74,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         launch {
             try {
                 val response =
-                    URL("${getString(R.string.github_api_entry)}/releases/latest").readText()
+                    "${getString(R.string.github_api_entry)}/releases/latest".httpGet()
                 val latest =
-                    JSONObject(response).getString("tag_name").filter { it.isDigit() }.toInt()
+                    JSONObject(response.asString()).getString("tag_name").filter { it.isDigit() }.toInt()
                 val current = BuildConfig.VERSION_NAME.filter { it.isDigit() }.toInt()
 
                 if (current < latest)
@@ -108,6 +112,15 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             setOnCheckedChangeListener { _, isChecked ->
                 preferences.edit(true) {
                     putBoolean(PREF_RUN_AS_64_BITS, isChecked)
+                }
+            }
+        }
+
+        binding.mAutoSendLogs.apply {
+            isChecked = preferences.getBoolean(PREF_AUTO_SEND_LOGS, false)
+            setOnCheckedChangeListener { _, isChecked ->
+                preferences.edit(true) {
+                    putBoolean(PREF_AUTO_SEND_LOGS, isChecked)
                 }
             }
         }
@@ -150,6 +163,17 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                         getString(R.string.success).toast(this, true)
                     else
                         getString(R.string.fail).toast(this, false)
+                    if(preferences.getBoolean(PREF_AUTO_SEND_LOGS, false)) {
+                        launch {
+                            val response = LogService.send(LogModel(result.log, result.wasSucceeded))
+                            if (BuildConfig.DEBUG) {
+                                Log.d(
+                                    "LogService",
+                                    "${response.code()} " + response.asString()
+                                )
+                            }
+                        }
+                    }
                 }.execute()
             }
         }

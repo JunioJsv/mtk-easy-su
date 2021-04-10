@@ -115,6 +115,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/run_as_64_bits" />
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/mAutoSendLogs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/auto_send_logs" />
+
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

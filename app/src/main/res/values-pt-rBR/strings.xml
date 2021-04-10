@@ -41,4 +41,5 @@
     <string name="terminal">terminal</string>
     <string name="tip_here">tip here</string>
     <string name="executing_script">Executando script</string>
+    <string name="auto_send_logs">" Aceitar o envio de logs de execução"</string>
 </resources>
