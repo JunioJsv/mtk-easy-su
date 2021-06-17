@@ -45,6 +45,7 @@ Exit value 0
 |Lenovo Vibe K5 Note|A7020a48|Mediatek MT6755  |   Fail  |
 | Vernee Mix 2    |  Mix 2  | Mediatek MT6757CD| Success |
 | Nokia 1         | TA-1130 | Mediatek MT6739WW|   Fail  |
+| Sony Xperia C5 Ultra | E5553 | Mediatek MT6752 | Success |
 
 ### Acknowledgments :handshake:
 - This app was based on [this](https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703) tutorial.
