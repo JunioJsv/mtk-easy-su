@@ -42,6 +42,7 @@ Exit value 0
 | Oppo F7         | CPH1821 |  Mediatek MT6771 |   Fail  |
 | Oppo F3         | CPH1609 | Mediatek MT6750T |   Fail  |
 |Lenovo Vibe K5 Note|A7020a48|Mediatek MT6755  |   Fail  |
+|Lenovo Tab E8   |TB-8304F1|Mediatek MT8163  |   Success  |
 | Vernee Mix 2    |  Mix 2  | Mediatek MT6757CD| Success |
 | Nokia 1         | TA-1130 | Mediatek MT6739WW|   Fail  |
 | Sony Xperia C5 Ultra | E5553 | Mediatek MT6752 | Success |
