@@ -1,12 +1,14 @@
 package juniojsv.mtk.easy.su
 
 import android.content.Context
+import android.text.method.ScrollingMovementMethod
+import android.view.MotionEvent
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.util.*
 
 fun Process.getOutput(): String {
     val stdout = BufferedReader(InputStreamReader(inputStream))
@@ -42,4 +44,18 @@ fun String.snack(
     if (action != null)
         snackbar.setAction(actionLabel, action)
     snackbar.show()
+}
+
+fun TextView.makeScrollableInsideScrollView() {
+    movementMethod = ScrollingMovementMethod()
+    setOnTouchListener { view, event ->
+        view.parent.requestDisallowInterceptTouchEvent(true)
+        when (event.action and MotionEvent.ACTION_MASK) {
+            MotionEvent.ACTION_UP -> {
+                view.parent.requestDisallowInterceptTouchEvent(false)
+                performClick()
+            }
+        }
+        false
+    }
 }

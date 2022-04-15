@@ -8,25 +8,27 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import com.google.android.gms.ads.*
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
-import io.github.rybalkinsd.kohttp.ext.asString
-import io.github.rybalkinsd.kohttp.ext.httpGet
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
+import com.google.android.gms.ads.admanager.AdManagerAdRequest
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback
 import juniojsv.mtk.easy.su.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import java.net.URL
-import java.time.LocalDateTime
-import java.util.*
+import retrofit2.Retrofit
+import retrofit2.await
+import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var preferences: SharedPreferences
-    private var advertising: InterstitialAd? = null
+    private lateinit var github: GithubRepository
+    private var advertising: RewardedInterstitialAd? = null
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO
 
@@ -37,6 +39,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         setContentView(binding.root)
 
         preferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
+        github = Retrofit.Builder().baseUrl(getString(R.string.github_api_entry))
+            .addConverterFactory(GsonConverterFactory.create()).build()
+            .create(GithubRepository::class.java)
+
+        binding.mLog.makeScrollableInsideScrollView()
 
         if (Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-", "")
                 .toInt() >= 20200301 &&
@@ -72,26 +79,18 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         launch {
-            try {
-                val response =
-                    "${getString(R.string.github_api_entry)}/releases/latest".httpGet()
-                val latest =
-                    JSONObject(response.asString()).getString("tag_name").filter { it.isDigit() }.toInt()
-                val current = BuildConfig.VERSION_NAME.filter { it.isDigit() }.toInt()
+            val update = getLatestUpdateAvailable()
 
-                if (current < latest)
-                    withContext(Dispatchers.Main) {
-                        getString(R.string.new_version_available).snack(
-                            binding.root, true, getString(R.string.download)
-                        ) {
-                            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                                data =
-                                    Uri.parse("${getString(R.string.github_url)}/releases/latest")
-                            })
-                        }
+            if (update != null) {
+                withContext(Dispatchers.Main) {
+                    getString(R.string.new_version_available).snack(
+                        binding.root, true, getString(R.string.download)
+                    ) {
+                        startActivity(Intent(Intent.ACTION_VIEW).apply {
+                            data = Uri.parse(update.url)
+                        })
                     }
-            } catch (e: Exception) {
-                Log.e(LOG_VERITY_UPDATE, "${e.message}")
+                }
             }
         }
 
@@ -112,15 +111,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             setOnCheckedChangeListener { _, isChecked ->
                 preferences.edit(true) {
                     putBoolean(PREF_RUN_AS_64_BITS, isChecked)
-                }
-            }
-        }
-
-        binding.mAutoSendLogs.apply {
-            isChecked = preferences.getBoolean(PREF_AUTO_SEND_LOGS, false)
-            setOnCheckedChangeListener { _, isChecked ->
-                preferences.edit(true) {
-                    putBoolean(PREF_AUTO_SEND_LOGS, isChecked)
                 }
             }
         }
@@ -155,7 +145,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             button.isEnabled = false
             loadNewAdvertising {
                 ExploitHandler(this) { result ->
-                    advertising?.show(this)
+                    advertising?.show(this) { }
                     binding.mLog.text = result.log
                     binding.mButtonCopy.isEnabled = true
                     button.isEnabled = true
@@ -163,17 +153,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                         getString(R.string.success).toast(this, true)
                     else
                         getString(R.string.fail).toast(this, false)
-                    if(preferences.getBoolean(PREF_AUTO_SEND_LOGS, false)) {
-                        launch {
-                            val response = LogService.send(LogModel(result.log, result.wasSucceeded))
-                            if (BuildConfig.DEBUG) {
-                                Log.d(
-                                    "LogService",
-                                    "${response.code()} " + response.asString()
-                                )
-                            }
-                        }
-                    }
                 }.execute()
             }
         }
@@ -184,23 +163,40 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    private fun loadNewAdvertising(onLoadedOrError: () -> Unit) = InterstitialAd.load(this, getString(R.string.advertising_id),
-        AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
-            override fun onAdLoaded(interstitial: InterstitialAd) {
-                advertising = interstitial
-                advertising
-                    ?.fullScreenContentCallback = object : FullScreenContentCallback() {
-                    override fun onAdDismissedFullScreenContent() {
-                        advertising = null
-                    }
-                }
-                onLoadedOrError()
-            }
+    private suspend fun getLatestUpdateAvailable(): GithubRelease? {
+        return try {
+            val release = github.getLatestRelease().await()
+            val latest = release.tag.filter { it.isDigit() }.toInt()
+            val current = BuildConfig.VERSION_NAME.filter { it.isDigit() }.toInt()
 
-            override fun onAdFailedToLoad(error: LoadAdError) {
-                advertising = null
-                onLoadedOrError()
-            }
-        })
+            if (current < latest) release else null
+        } catch (e: Exception) {
+            Log.e(LOG_VERITY_UPDATE, "${e.message}")
+            null
+        }
+    }
+
+    private fun loadNewAdvertising(onComplete: (error: LoadAdError?) -> Unit) =
+        RewardedInterstitialAd.load(
+            this, getString(R.string.advertising_id),
+            AdManagerAdRequest.Builder().build(),
+            object : RewardedInterstitialAdLoadCallback() {
+                override fun onAdLoaded(interstitial: RewardedInterstitialAd) {
+                    advertising = interstitial
+                    advertising
+                        ?.fullScreenContentCallback = object : FullScreenContentCallback() {
+                        override fun onAdDismissedFullScreenContent() {
+                            advertising = null
+                        }
+                    }
+                    onComplete(null)
+                }
+
+                override fun onAdFailedToLoad(error: LoadAdError) {
+                    advertising = null
+                    onComplete(error)
+                }
+            },
+        )
 
 }

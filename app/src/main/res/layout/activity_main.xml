@@ -115,11 +115,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/run_as_64_bits" />
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/mAutoSendLogs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/auto_send_logs" />
 
 
                 </LinearLayout>
@@ -137,8 +132,10 @@
                         android:id="@+id/mLog"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/log_null"
-                        android:textIsSelectable="true" />
+                        android:maxHeight="250dp"
+                        android:scrollbars="vertical"
+                        android:text="@string/log_null" />
+
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/mButtonCopy"
@@ -202,7 +199,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <Space
+            <androidx.legacy.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="80dp" />
         </LinearLayout>
