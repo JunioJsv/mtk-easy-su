@@ -48,6 +48,7 @@ Exit value 0
 | Sony Xperia C5 Ultra | E5553 | Mediatek MT6752 | Success |
 | Redmi 6 | Cerus | Mediatek MT6762 | Success |
 | Ark Elf S8 | Elf S8 | MediaTek MT6580 | Success |
+| Sony Xperia L3 | I4312 | MediaTek MT6762 | Success |
 
 ### Acknowledgments :handshake:
 - This app was based on [this](https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703) tutorial.
