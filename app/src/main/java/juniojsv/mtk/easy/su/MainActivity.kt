@@ -13,8 +13,8 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.RequestConfiguration
 import com.google.android.gms.ads.admanager.AdManagerAdRequest
-import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd
-import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import juniojsv.mtk.easy.su.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,7 +28,7 @@ import kotlin.coroutines.CoroutineContext
 class MainActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var preferences: SharedPreferences
     private lateinit var github: GithubRepository
-    private var advertising: RewardedInterstitialAd? = null
+    private var advertising: InterstitialAd? = null
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO
 
@@ -145,11 +145,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             button.isEnabled = false
             loadNewAdvertising {
                 ExploitHandler(this) { result ->
-                    advertising?.show(this) { }
+                    advertising?.show(this)
                     binding.mLog.text = result.log
                     binding.mButtonCopy.isEnabled = true
                     button.isEnabled = true
-                    if (result.wasSucceeded)
+                    if (result.isSuccessful)
                         getString(R.string.success).toast(this, true)
                     else
                         getString(R.string.fail).toast(this, false)
@@ -177,11 +177,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun loadNewAdvertising(onComplete: (error: LoadAdError?) -> Unit) =
-        RewardedInterstitialAd.load(
+        InterstitialAd.load(
             this, getString(R.string.advertising_id),
             AdManagerAdRequest.Builder().build(),
-            object : RewardedInterstitialAdLoadCallback() {
-                override fun onAdLoaded(interstitial: RewardedInterstitialAd) {
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(interstitial: InterstitialAd) {
                     advertising = interstitial
                     advertising
                         ?.fullScreenContentCallback = object : FullScreenContentCallback() {
