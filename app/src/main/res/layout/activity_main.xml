@@ -7,10 +7,12 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/mAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mToolBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -26,6 +28,10 @@
         <LinearLayout
             android:id="@+id/mRootView"
             style="@style/LinearLayoutContainer">
+
+            <android.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="24dp" />
 
             <com.google.android.material.card.MaterialCardView style="@style/CustomCardView">
 
@@ -199,9 +205,10 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <androidx.legacy.widget.Space
+            <android.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="80dp" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -216,5 +223,16 @@
         app:maxImageSize="48dp"
         app:tint="@android:color/white"
         tools:ignore="ContentDescription" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/mBannerAd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_advertising_id"
+        app:layout_anchor="@id/mAppBar"
+        android:layout_gravity="bottom"
+        app:layout_anchorGravity="bottom" />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

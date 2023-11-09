@@ -15,8 +15,9 @@
     </string>
     <string name="executing_script">Executing script</string>
     <string name="please_wait">Please wait</string>
+    <string name="banner_advertising_id" translatable="false">ca-app-pub-4100401274047460/1297176350</string>
     <string name="application_advertising_id" translatable="false">ca-app-pub-4100401274047460~8660712784</string>
-    <string name="advertising_id" translatable="false">ca-app-pub-4100401274047460/2396825799</string>
+    <string name="intersticial_advertising_id" translatable="false">ca-app-pub-4100401274047460/2396825799</string>
     <string name="donate_url" translatable="false">https://mpago.la/2anvA1b</string>
     <string name="github_url" translatable="false">https://github.com/JunioJsv/mtk-easy-su</string>
     <string name="github_api_entry" translatable="false">https://api.github.com/</string>

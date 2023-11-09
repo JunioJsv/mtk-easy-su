@@ -1,6 +1,10 @@
 package juniojsv.mtk.easy.su
 
-import android.content.*
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -8,6 +12,10 @@ import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
+import com.applovin.sdk.AppLovinPrivacySettings
+import com.applovin.sdk.AppLovinSdk
+import com.applovin.sdk.AppLovinSdkSettings
+import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.MobileAds
@@ -23,11 +31,14 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.await
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.Timer
+import java.util.TimerTask
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
     private lateinit var preferences: SharedPreferences
     private lateinit var github: GithubRepository
+    private lateinit var binding: ActivityMainBinding
     private var advertising: InterstitialAd? = null
     override val coroutineContext: CoroutineContext
         get() = Dispatchers.IO
@@ -35,7 +46,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         preferences = getSharedPreferences(BuildConfig.APPLICATION_ID, Context.MODE_PRIVATE)
@@ -65,8 +76,21 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
 
         try {
+            if (BuildConfig.APPLOVIN_SDK_KEY.isNotBlank()) {
+                AppLovinPrivacySettings.setHasUserConsent(true, this)
+                AppLovinSdk.getInstance(
+                    BuildConfig.APPLOVIN_SDK_KEY,
+                    AppLovinSdkSettings(this).also { settings ->
+                        if (BuildConfig.DEBUG) {
+                            settings.setVerboseLogging(true)
+                        }
+                    },
+                    this
+                ).initializeSdk()
+            }
             MobileAds.initialize(this) {
-                if (BuildConfig.DEBUG) {
+                onSetupBannerAd()
+                if (BuildConfig.DEBUG && BuildConfig.ADMOB_TEST_DEVICE.isNotBlank()) {
                     MobileAds.setRequestConfiguration(
                         RequestConfiguration.Builder().setTestDeviceIds(
                             mutableListOf(BuildConfig.ADMOB_TEST_DEVICE)
@@ -143,7 +167,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         binding.mButtonTryRoot.setOnClickListener { button ->
             getString(R.string.please_wait).toast(this, true)
             button.isEnabled = false
-            loadNewAdvertising {
+            onLoadFullScreenAd {
                 ExploitHandler(this) { result ->
                     advertising?.show(this)
                     binding.mLog.text = result.log
@@ -176,9 +200,24 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
         }
     }
 
-    private fun loadNewAdvertising(onComplete: (error: LoadAdError?) -> Unit) =
+    private fun onSetupBannerAd() {
+        fun onLoadNewAd() = launch(Dispatchers.Main) {
+            binding.mBannerAd.loadAd(AdRequest.Builder().build())
+        }
+
+        Timer().scheduleAtFixedRate(
+            object : TimerTask() {
+                override fun run() {
+                    onLoadNewAd()
+                }
+            },
+            0, 3000,
+        )
+    }
+
+    private fun onLoadFullScreenAd(onComplete: (error: LoadAdError?) -> Unit) =
         InterstitialAd.load(
-            this, getString(R.string.advertising_id),
+            this, getString(R.string.intersticial_advertising_id),
             AdManagerAdRequest.Builder().build(),
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(interstitial: InterstitialAd) {

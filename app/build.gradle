@@ -11,8 +11,8 @@ file("${rootDir}/env.properties").withInputStream { env.load(it) }
 
 android {
 
-    applicationVariants.all { variant ->
-        variant.outputs.all {
+    applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
             outputFileName = "mtk-easy-su-v${defaultConfig.versionName}.apk"
         }
     }
@@ -38,15 +38,15 @@ android {
     defaultConfig {
         applicationId 'juniojsv.mtk.easy.su'
         minSdkVersion 21
-        compileSdkVersion 32
-        targetSdkVersion 32
-        versionCode 208
-        versionName "2.1.1"
+        compileSdk 33
+        versionCode 209
+        versionName "2.2.0"
     }
 
     buildTypes {
-        all {
-            buildConfigField "String", "ADMOB_TEST_DEVICE", "\"$adbmob_test_device\""
+        configureEach {
+            buildConfigField "String", "ADMOB_TEST_DEVICE", "\"${env['admob.test.device']}\""
+            buildConfigField "String", "APPLOVIN_SDK_KEY", "\"${env['applovin.sdk.key']}\""
         }
         release {
             minifyEnabled true
@@ -56,21 +56,20 @@ android {
         }
     }
 
-
     buildFeatures {
         viewBinding true
     }
-
-    buildToolsVersion = '29.0.3'
+    namespace 'juniojsv.mtk.easy.su'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //noinspection GradleDependency
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'com.google.android.material:material:1.5.0'
-    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    implementation 'com.google.android.gms:play-services-ads:22.5.0'
+    implementation 'com.google.ads.mediation:facebook:6.16.0.0'
+    implementation 'com.google.ads.mediation:applovin:11.11.3.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
