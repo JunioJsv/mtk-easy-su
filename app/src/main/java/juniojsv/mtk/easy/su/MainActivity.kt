@@ -31,8 +31,6 @@ import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.await
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.Timer
-import java.util.TimerTask
 import kotlin.coroutines.CoroutineContext
 
 class MainActivity : AppCompatActivity(), CoroutineScope {
@@ -201,18 +199,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     }
 
     private fun onSetupBannerAd() {
-        fun onLoadNewAd() = launch(Dispatchers.Main) {
-            binding.mBannerAd.loadAd(AdRequest.Builder().build())
-        }
-
-        Timer().scheduleAtFixedRate(
-            object : TimerTask() {
-                override fun run() {
-                    onLoadNewAd()
-                }
-            },
-            0, 3000,
-        )
+        binding.mBannerAd.loadAd(AdRequest.Builder().build())
     }
 
     private fun onLoadFullScreenAd(onComplete: (error: LoadAdError?) -> Unit) =
