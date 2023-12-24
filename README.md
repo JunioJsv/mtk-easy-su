@@ -52,6 +52,7 @@ Exit value 0
 | GIONEE S10              | GIONEE_SW17G04 |   MediaTek MT6767    | Success |
 | GIONEE M7               | GIONEE_SW17G07 |   MediaTek MT6758    | Success |
 | Southern Telecom PB1009 |     PB1009     |   MediaTek MT8167B   | Success |
+| Meizu MX6               |     MX6        |   MediaTek MT6797    | Success |
 
 ### Acknowledgments :handshake:
 - This app was based on [this](https://forum.xda-developers.com/android/development/amazing-temp-root-mediatek-armv8-t3922213/post82081703#post82081703) tutorial.
