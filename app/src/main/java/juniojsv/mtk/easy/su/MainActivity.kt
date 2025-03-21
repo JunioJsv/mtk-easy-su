@@ -5,16 +5,13 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
-import com.applovin.sdk.AppLovinPrivacySettings
-import com.applovin.sdk.AppLovinSdk
-import com.applovin.sdk.AppLovinSdkSettings
+import androidx.core.net.toUri
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
@@ -54,44 +51,32 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         binding.mLog.makeScrollableInsideScrollView()
 
-        if (Build.VERSION.SDK_INT > 22 && Build.VERSION.SECURITY_PATCH.replace("-", "")
-                .toInt() >= 20200301 &&
-            !preferences.getBoolean(PREF_SECURITY_PATCH_IGNORED, false)
+        if (Build.VERSION.SECURITY_PATCH.replace("-", "")
+                .toInt() >= 20200301 && !preferences.getBoolean(PREF_SECURITY_PATCH_IGNORED, false)
         ) {
             AlertDialog.Builder(this).run {
                 setTitle(R.string.warning_word)
                 setMessage(R.string.security_patch_warning)
-                setPositiveButton(R.string.close) { _, _ ->
-                    finishAndRemoveTask()
-                }
-                setNegativeButton(getText(R.string.ignore)) { _, _ ->
+                setPositiveButton(getText(R.string.ignore)) { _, _ ->
                     preferences.edit(true) {
                         putBoolean(PREF_SECURITY_PATCH_IGNORED, true)
                     }
+                }
+                setNegativeButton(R.string.close) { _, _ ->
+                    finishAndRemoveTask()
                 }
                 create().apply { setCanceledOnTouchOutside(false) }
             }.show()
         }
 
         try {
-            if (BuildConfig.APPLOVIN_SDK_KEY.isNotBlank()) {
-                AppLovinPrivacySettings.setHasUserConsent(true, this)
-                AppLovinSdk.getInstance(
-                    BuildConfig.APPLOVIN_SDK_KEY,
-                    AppLovinSdkSettings(this).also { settings ->
-                        if (BuildConfig.DEBUG) {
-                            settings.setVerboseLogging(true)
-                        }
-                    },
-                    this
-                ).initializeSdk()
-            }
             MobileAds.initialize(this) {
                 onSetupBannerAd()
-                if (BuildConfig.DEBUG && BuildConfig.ADMOB_TEST_DEVICE.isNotBlank()) {
+                val admobTestDevice = getString(R.string.admob_test_device)
+                if (BuildConfig.DEBUG && admobTestDevice.isNotBlank()) {
                     MobileAds.setRequestConfiguration(
                         RequestConfiguration.Builder().setTestDeviceIds(
-                            mutableListOf(BuildConfig.ADMOB_TEST_DEVICE)
+                            mutableListOf(admobTestDevice)
                         ).build()
                     )
                 }
@@ -109,7 +94,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                         binding.root, true, getString(R.string.download)
                     ) {
                         startActivity(Intent(Intent.ACTION_VIEW).apply {
-                            data = Uri.parse(update.url)
+                            data = update.url.toUri()
                         })
                     }
                 }
@@ -146,19 +131,19 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         binding.mButtonDonate.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(getString(R.string.donate_url))
+                data = getString(R.string.donate_url).toUri()
             })
         }
 
         binding.mButtonGithub.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(getString(R.string.github_url))
+                data = getString(R.string.github_url).toUri()
             })
         }
 
         binding.mButtonXda.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse(getString(R.string.xda_url))
+                data = getString(R.string.xda_url).toUri()
             })
         }
 
@@ -204,7 +189,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
     private fun onLoadFullScreenAd(onComplete: (error: LoadAdError?) -> Unit) =
         InterstitialAd.load(
-            this, getString(R.string.intersticial_advertising_id),
+            this, getString(R.string.interstitial_advertising_id),
             AdManagerAdRequest.Builder().build(),
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(interstitial: InterstitialAd) {

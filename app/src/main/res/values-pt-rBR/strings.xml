@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">
-        Este aplicativo visa ajudar você a usar o mtk-su para inicializar o Magisk em dispositivos compatíveis,
-        incluindo aqueles bootloader bloqueados! Ele é executado inteiramente a partir da partição de dados: não
-        precisa modificar o firmware. O Root está disponível para qualquer aplicativo que desejar.
-        Mas para gerenciar o acesso root para cada aplicativo, você deve baixar Magisk manager
+        Este aplicativo ajuda a usar o mtk-su para carregar o Magisk em dispositivos compatíveis,
+        incluindo dispositivos com bootloader bloqueado! Ele é executado completamente a partir da partição de dados,
+        sem a necessidade de modificar o firmware. O acesso root está disponível para qualquer aplicativo que você desejar,
+        mas para gerenciar o acesso root de cada aplicativo, é necessário baixar o Magisk Manager.
     </string>
     <string name="startup_warning">
-        O uso indevido do acesso super usuário pode danificar seriamente o seu dispositivo,
-        tenha em mente que você é o responsável pelo seu dispositivo
+        O uso incorreto dos privilégios de superusuário pode danificar seriamente seu dispositivo.
+        Lembre-se de que você é o único responsável por seu dispositivo.
     </string>
     <string name="warning">
-        Não atualize o Magisk através do Magisk Manager em um bootloader bloqueado, porque a chances de brickar seu dispositivo.
-        Aliás, não sou responsável por qualquer tipo de dano ao seu dispositivo
+        Não atualize o Magisk via Magisk Manager em um dispositivo com o bootloader bloqueado, pois isso pode causar o bloqueio do seu dispositivo.
+        Além disso, eu não me responsabilizo por nenhum dano ao seu dispositivo.
     </string>
     <string name="success">
-        Permissão de super usuário concedida, use o Magisk manager para gerenciar</string>
-    <string name="john_wu_about">John Wu\nDesenvolvedor do Magisk</string>
+        Privilégios de superusuário concedidos. Use o Magisk Manager para gerenciar.</string>
+    <string name="john_wu_about">John Wu\nCriador do Magisk</string>
     <string name="juniojsv_about">JunioJsv\nDesenvolvedor deste aplicativo</string>
-    <string name="mtk_su">Diplomatic\nDesenvolvedor do mtk-su</string>
+    <string name="mtk_su">Diplomatic\nCriador do mtk-su</string>
     <string name="app_name">Mtk Easy Su</string>
-    <string name="please_wait">Por favor, aguarde</string>
+    <string name="executing_script">Executando script...</string>
+    <string name="please_wait">Por favor, aguarde…</string>
     <string name="version">Versão</string>
     <string name="accept">Aceitar</string>
     <string name="about_word">Sobre</string>
-    <string name="developers">Desenvolvedores</string>
-    <string name="preferences">Preferência</string>
+    <string name="credits">Créditos</string>
+    <string name="preferences">Preferências</string>
     <string name="warning_word">Aviso</string>
     <string name="copy">Copiar</string>
     <string name="donate">Doar</string>
-    <string name="run_as_64_bits">Executar como 64 Bits</string>
-    <string name="xda">Xda fórum</string>
+    <string name="run_as_64_bits">Executar como 64 bits</string>
+    <string name="xda">Fórum XDA</string>
     <string name="fail">Falha, tente novamente</string>
-    <string name="log">Registro</string>
+    <string name="log">Log</string>
     <string name="new_version_available">Nova versão disponível</string>
     <string name="download">Baixar</string>
     <string name="close">Fechar</string>
-    <string name="security_patch_warning">A data do security patch é após março de 2020. Por favor tente novamente após um firmware downgrade</string>
+    <string name="security_patch_warning">
+        A data de atualização de segurança é posterior a março de 2020. Tente novamente após fazer o downgrade do firmware.
+    </string>
     <string name="ignore">Ignorar</string>
-    <string name="terminal">terminal</string>
-    <string name="tip_here">tip here</string>
-    <string name="executing_script">Executando script</string>
-    <string name="auto_send_logs">" Aceitar o envio de logs de execução"</string>
+    <string name="terminal">Terminal</string>
+    <string name="auto_send_logs">Aceitar envio de logs de execução</string>
 </resources>

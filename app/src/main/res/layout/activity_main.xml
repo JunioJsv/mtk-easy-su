@@ -39,7 +39,7 @@
 
                     <TextView
                         style="@style/CustomCardViewTitle"
-                        android:text="@string/developers" />
+                        android:text="@string/credits" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -88,8 +88,10 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             style="@style/CustomCardViewDeveloperImage"
+                            android:background="@color/primaryColor"
                             android:contentDescription="@string/todo"
-                            app:srcCompat="@mipmap/juniojsv_img" />
+                            android:tint="@android:color/white"
+                            app:srcCompat="@drawable/ic_person_black_24dp" />
 
                         <TextView
                             android:layout_width="wrap_content"

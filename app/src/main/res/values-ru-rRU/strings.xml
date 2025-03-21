@@ -1,45 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="about">
-        Это приложение призвано помочь вам использовать mtk-su для загрузки Magisk на совместимых устройствах,
-        включая заблокированные загрузчики! Он выполняется полностью из раздела данных: нет
-        нужно доработать прошивку. Root доступен для любого приложения, которое вы хотите.
-        Но для управления корневым доступом для каждого приложения необходимо скачать Magisk manager
+        Это приложение поможет вам использовать mtk-su для загрузки Magisk на совместимых устройствах,
+        включая те, у которых заблокирован загрузчик! Оно работает полностью в разделе данных,
+        поэтому вам не нужно изменять прошивку. Root-доступ доступен для любого приложения,
+        но для управления им необходимо скачать Magisk Manager.
     </string>
     <string name="startup_warning">
-        Неправильное использование доступа суперпользователя может серьезно повредить ваше устройство,
-        имейте в виду, что вы несете ответственность за свое устройство
+        Неправильное использование прав суперпользователя может серьезно повредить ваше устройство.
+        Имейте в виду, что вы несете полную ответственность за его использование.
     </string>
     <string name="warning">
-        Не обновляйте Magisk через Magisk Manager на заблокированном загрузчике, потому что есть шанс заблокировать ваше устройство.
-        Кстати, я не несу ответственности ни за какие повреждения вашего устройства
+        Не обновляйте Magisk через Magisk Manager на устройстве с заблокированным загрузчиком,
+        иначе вы можете его заблокировать.
+        Кроме того, я не несу ответственности за любой возможный ущерб вашему устройству.
     </string>
     <string name="success">
-        Разрешение суперпользователя предоставлено, используйте диспетчер Magisk для управления</string>
-    <string name="john_wu_about">John Wu\nРазработчик Magisk</string>
+        Права суперпользователя предоставлены. Используйте Magisk Manager для управления.</string>
+    <string name="john_wu_about">John Wu\nСоздатель Magisk</string>
     <string name="juniojsv_about">JunioJsv\nРазработчик этого приложения</string>
-    <string name="mtk_su">Diplomatic\nРазработчик mtk-su</string>
+    <string name="mtk_su">Diplomatic\nСоздатель mtk-su</string>
     <string name="app_name">Mtk Easy Su</string>
-    <string name="executing_script">Выполнение скрипта</string>
-    <string name="please_wait">пожалуйста, подождите</string>
+    <string name="executing_script">Выполняется скрипт…</string>
+    <string name="please_wait">Пожалуйста, подождите…</string>
     <string name="version">Версия</string>
     <string name="accept">Принять</string>
-    <string name="about_word">На</string>
-    <string name="developers">Разработчики</string>
-    <string name="preferences">Предпочтение</string>
-    <string name="warning_word">Уведомление</string>
+    <string name="about_word">О приложении</string>
+    <string name="credits">Благодарности</string>
+    <string name="preferences">Настройки</string>
+    <string name="warning_word">Предупреждение</string>
     <string name="copy">Копировать</string>
-    <string name="donate">Пожертвовать</string>
-    <string name="run_as_64_bits">Запускать как 64 битный</string>
-    <string name="xda">Xda форум</string>
-    <string name="fail">Ошибка, попробуйте еще раз</string>
-    <string name="log">Запись</string>
-    <string name="new_version_available">доступна новая версия</string>
-    <string name="download">скачать</string>
-    <string name="close">close</string>
-    <string name="security_patch_warning">Дата обновления системы безопасности - после марта 2020 г. Повторите попытку после перехода на более раннюю версию прошивки</string>
+    <string name="donate">Поддержать</string>
+    <string name="run_as_64_bits">Запустить в 64-битном режиме</string>
+    <string name="xda">Форум XDA</string>
+    <string name="fail">Ошибка. Попробуйте еще раз.</string>
+    <string name="log">Журнал</string>
+    <string name="new_version_available">Доступна новая версия</string>
+    <string name="download">Скачать</string>
+    <string name="close">Закрыть</string>
+    <string name="security_patch_warning">
+        Дата обновления системы безопасности — после марта 2020 года.
+        Повторите попытку после отката прошивки.
+    </string>
     <string name="ignore">Игнорировать</string>
-    <string name="terminal">terminal</string>
-    <string name="tip_here">tip here</string>
-    <string name="auto_send_logs">принять отправку журналов выполнения</string>
+    <string name="terminal">Терминал</string>
+    <string name="auto_send_logs">Разрешить отправку журналов выполнения</string>
 </resources>

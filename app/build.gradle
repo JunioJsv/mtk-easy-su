@@ -37,16 +37,18 @@ android {
 
     defaultConfig {
         applicationId 'juniojsv.mtk.easy.su'
-        minSdkVersion 21
-        compileSdk 33
-        versionCode 209
-        versionName "2.2.0"
+        minSdkVersion 23
+        compileSdk 34
+        versionCode 210
+        versionName "2.2.1"
     }
 
     buildTypes {
         configureEach {
-            buildConfigField "String", "ADMOB_TEST_DEVICE", "\"${env['admob.test.device']}\""
-            buildConfigField "String", "APPLOVIN_SDK_KEY", "\"${env['applovin.sdk.key']}\""
+            resValue "string", "application_advertising_id", env['application.advertising.id']
+            resValue "string", "interstitial_advertising_id", env['interstitial.advertising.id']
+            resValue "string", "banner_advertising_id", env['banner.advertising.id']
+            resValue "string", "admob_test_device", env['admob.test.device']
         }
         release {
             minifyEnabled true
@@ -58,6 +60,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     namespace 'juniojsv.mtk.easy.su'
 }
@@ -67,13 +70,11 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'com.google.android.material:material:1.5.0'
-    implementation 'com.google.android.gms:play-services-ads:22.5.0'
-    implementation 'com.google.ads.mediation:facebook:6.16.0.0'
-    implementation 'com.google.ads.mediation:applovin:11.11.3.0'
+    implementation 'com.google.android.gms:play-services-ads:24.1.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation platform('com.google.firebase:firebase-bom:29.3.0')
+    implementation platform('com.google.firebase:firebase-bom:33.11.0')
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
 }
