@@ -41,34 +41,35 @@ Exit value 0
 ## Tested devices
 | Device                  |     Model      |       Chipset        | Result  |
 |-------------------------|:--------------:|:--------------------:|:-------:|
-| Lg X Power2             |     M320N      |   MediaTek MT6750    | Success |
+| Alcatel 1               |     5033T      |   Mediatek MT6739    | Success |
+| Alcatel A3 LX           |     9008X      |   Mediatek MT8735B   | Success |
+| Ark Elf S8              |     Elf S8     |   MediaTek MT6580    | Success |
+| GIONEE M7               | GIONEE_SW17G07 |   MediaTek MT6758    | Success |
+| GIONEE S10              | GIONEE_SW17G04 |   MediaTek MT6767    | Success |
+| Lenovo Tab E8           |   TB-8304F1    |   Mediatek MT8163    | Success |
+| Lg G Pad F2 8.0         |     LK460      |   Mediatek MT6750    | Success |
+| Lg K4                   |     X230DS     |   MediaTek MT6737M   | Success |
 | Lg K10                  |     M250DS     |   MediaTek MT6750    | Success |
 | Lg K10 Power            |     M320TV     |   MediaTek MT6750    | Success |
 | Lg K10 TV               |    K430DSF     |   MediaTek MT6753    | Success |
-| Lg K8                   |      K350      |   Mediatek MT6735    |  Fail   |
-| Lg K4                   |     X230DS     |   MediaTek MT6737M   | Success |
+| Lg X Power2             |     M320N      |   MediaTek MT6750    | Success |
+| Meizu MX6               |     MX6        |   MediaTek MT6797    | Success |
 | Motorola Moto C         |     XT1756     |   Mediatek MT6737M   | Success |
 | Motorola Moto E4        |     XT1773     |   Mediatek MT6737    | Success |
-| Alcatel A3 LX           |     9008X      |   Mediatek MT8735B   | Success |
-| Alcatel 1               |     5033T      |   Mediatek MT6739    | Success |
+| Nook Tablet 10.1        |    BNTV650     | Mediatek A35-MT8167A | Success |
+| Redmi 6                 |     Cerus      |   Mediatek MT6762    | Success |
+| Sony Xperia C5 Ultra    |     E5553      |   Mediatek MT6752    | Success |
+| Sony Xperia L3          |     I4312      |   MediaTek MT6762    | Success |
+| Southern Telecom PB1009 |     PB1009     |   MediaTek MT8167B   | Success |
+| Vernee Mix 2            |     Mix 2      |  Mediatek MT6757CD   | Success |
+| ZTE Blade A7 Prime      |      OEM       | Mediatek A22-MT6761  | Success |
 | Alcatel U5 3G           |     4047A      |   Mediatek MT6580M   |  Fail   |
 | Blu Studio X8 HD        |      S532      |   Mediatek MT6580    |  Fail   |
-| Nook Tablet 10.1        |    BNTV650     | Mediatek A35-MT8167A | Success |
-| ZTE Blade A7 Prime      |      OEM       | Mediatek A22-MT6761  | Success |
-| Oppo F7                 |    CPH1821     |   Mediatek MT6771    |  Fail   |
-| Oppo F3                 |    CPH1609     |   Mediatek MT6750T   |  Fail   |
 | Lenovo Vibe K5 Note     |    A7020a48    |   Mediatek MT6755    |  Fail   |
-| Lenovo Tab E8           |   TB-8304F1    |   Mediatek MT8163    | Success |
-| Vernee Mix 2            |     Mix 2      |  Mediatek MT6757CD   | Success |
+| Lg K8                   |      K350      |   Mediatek MT6735    |  Fail   |
 | Nokia 1                 |    TA-1130     |  Mediatek MT6739WW   |  Fail   |
-| Sony Xperia C5 Ultra    |     E5553      |   Mediatek MT6752    | Success |
-| Redmi 6                 |     Cerus      |   Mediatek MT6762    | Success |
-| Ark Elf S8              |     Elf S8     |   MediaTek MT6580    | Success |
-| Sony Xperia L3          |     I4312      |   MediaTek MT6762    | Success |
-| GIONEE S10              | GIONEE_SW17G04 |   MediaTek MT6767    | Success |
-| GIONEE M7               | GIONEE_SW17G07 |   MediaTek MT6758    | Success |
-| Southern Telecom PB1009 |     PB1009     |   MediaTek MT8167B   | Success |
-| Meizu MX6               |     MX6        |   MediaTek MT6797    | Success |
+| Oppo F3                 |    CPH1609     |   Mediatek MT6750T   |  Fail   |
+| Oppo F7                 |    CPH1821     |   Mediatek MT6771    |  Fail   |
 
 ## Acknowledgments
 
