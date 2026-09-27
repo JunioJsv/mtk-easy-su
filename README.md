@@ -69,6 +69,7 @@ Exit value 0
 | GIONEE M7               | GIONEE_SW17G07 |   MediaTek MT6758    | Success |
 | Southern Telecom PB1009 |     PB1009     |   MediaTek MT8167B   | Success |
 | Meizu MX6               |     MX6        |   MediaTek MT6797    | Success |
+| Sony Xperia XA1         |     G3121      |   MediaTek MT6757    | Success |
 
 ## Acknowledgments
 
